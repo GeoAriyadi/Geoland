@@ -1,0 +1,28 @@
+{
+"type": "FeatureCollection",
+"name": "hopital_point",
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "fid": 1278, "full_id": "n600488283", "osm_id": "600488283", "osm_type": "node", "name": "Kasih Ibu General Hospital (Uluwatu)", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.175837, -8.76022 ] } },
+{ "type": "Feature", "properties": { "id": 2, "fid": 1282, "full_id": "n2491810790", "osm_id": "2491810790", "osm_type": "node", "name": "puskesmas Sibang kaja", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.220921, -8.569891 ] } },
+{ "type": "Feature", "properties": { "id": 3, "fid": 1286, "full_id": "n4419873830", "osm_id": "4419873830", "osm_type": "node", "name": "Rumah Sakit Universitas Udayana", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.175171, -8.789166 ] } },
+{ "type": "Feature", "properties": { "id": 4, "fid": 1288, "full_id": "n4569917867", "osm_id": "4569917867", "osm_type": "node", "name": "RSU Premagana", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.257531, -8.614858 ] } },
+{ "type": "Feature", "properties": { "id": 5, "fid": 1295, "full_id": "n9209862504", "osm_id": "9209862504", "osm_type": "node", "name": "Bali Mandala Regional General Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.247846, -8.703345 ] } },
+{ "type": "Feature", "properties": { "id": 6, "fid": 1297, "full_id": "n9810776091", "osm_id": "9810776091", "osm_type": "node", "name": "Bali Royal Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.227839, -8.668421 ] } },
+{ "type": "Feature", "properties": { "id": 7, "fid": 1298, "full_id": "n9810808425", "osm_id": "9810808425", "osm_type": "node", "name": "Rumah Sakit Ibu Dan Anak Harapan Bunda", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.232441, -8.673647 ] } },
+{ "type": "Feature", "properties": { "id": 8, "fid": 1299, "full_id": "n10168238983", "osm_id": "10168238983", "osm_type": "node", "name": "Puskesmas Blahbatuh II", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.326523, -8.571739 ] } },
+{ "type": "Feature", "properties": { "id": 9, "fid": 1300, "full_id": "n10997213225", "osm_id": "10997213225", "osm_type": "node", "name": "Murni Teguh Hospitals", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.178338, -8.737348 ] } },
+{ "type": "Feature", "properties": { "id": 10, "fid": 1302, "full_id": null, "osm_id": null, "osm_type": null, "name": "Siloam Hospital Denpasar", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.184973, -8.715118 ] } },
+{ "type": "Feature", "properties": { "id": 11, "fid": 1303, "full_id": null, "osm_id": null, "osm_type": null, "name": "RSU Garbamed Kerobokan", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.172517, -8.641949 ] } },
+{ "type": "Feature", "properties": { "id": 12, "fid": 1304, "full_id": null, "osm_id": null, "osm_type": null, "name": "Balimed Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.19115, -8.656863 ] } },
+{ "type": "Feature", "properties": { "id": 13, "fid": 1305, "full_id": null, "osm_id": null, "osm_type": null, "name": "RSU Bhakti Rahayu", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.128604, -8.524263 ] } },
+{ "type": "Feature", "properties": { "id": 14, "fid": 1306, "full_id": null, "osm_id": null, "osm_type": null, "name": "Kenak Medika Hospital Ubud", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.272211, -8.533118 ] } },
+{ "type": "Feature", "properties": { "id": 15, "fid": 1307, "full_id": null, "osm_id": null, "osm_type": null, "name": "RSU Gianyar", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.322539, -8.537259 ] } },
+{ "type": "Feature", "properties": { "id": 16, "fid": 1308, "full_id": null, "osm_id": null, "osm_type": null, "name": "Rumah Sakit Windu Husada", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.231692, -8.550079 ] } },
+{ "type": "Feature", "properties": { "id": 17, "fid": 1309, "full_id": null, "osm_id": null, "osm_type": null, "name": "Mangusada Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.182883, -8.578537 ] } },
+{ "type": "Feature", "properties": { "id": 18, "fid": 1310, "full_id": null, "osm_id": null, "osm_type": null, "name": "Wangaya Regional General Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.213315, -8.648756 ] } },
+{ "type": "Feature", "properties": { "id": 19, "fid": 1311, "full_id": null, "osm_id": null, "osm_type": null, "name": "Rumah Sakit Bhayangkara Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.224108, -8.646018 ] } },
+{ "type": "Feature", "properties": { "id": 20, "fid": 1312, "full_id": null, "osm_id": null, "osm_type": null, "name": "Prof dr IGNG Ngoerah Hospital", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.211644, -8.675565 ] } },
+{ "type": "Feature", "properties": { "id": 21, "fid": 1313, "full_id": null, "osm_id": null, "osm_type": null, "name": "RR. Prima Medika", "class": "hospital" }, "geometry": { "type": "Point", "coordinates": [ 115.214598, -8.678214 ] } }
+]
+}

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mandalika SEZ Land Analysis</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<base target="_blank">
+<link rel="stylesheet" type="text/css" href="./Qgis2threejs.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style type="text/css">
+#popup, #header, #layerpanel {
+  left: 36px;
+}
+#map-title-box {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  max-width: 340px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999;
+  animation: fadeIn 1.2s ease;
+}
+.map-widgets {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  animation: fadeIn 1.3s ease;
+}
+
+.north-arrow-wrap {
+  width: 62px;
+  height: 62px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.scale-bar-wrap {
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.scale-text {
+  font-size: 9px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+}
+
+.scale-ruler {
+  height: 5px;
+  border: 1.5px solid white;
+  border-top: none;
+  width: 120px;
+}
+
+#map-title {
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+#map-desc-box {
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  /* --- MULAI TAMBAHAN DI SINI --- */
+.map-widgets {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.north-arrow-wrap, .scale-bar-wrap {
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.north-arrow-wrap {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scale-bar-wrap {
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scale-text {
+  font-size: 9px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scale-ruler {
+  height: 5px;
+  border: 1.5px solid white;
+  border-top: none;
+  width: 120px;
+}
+/* --- SELESAI TAMBAHAN --- */
+  #legend-box {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  max-width: 300px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  z-index: 9999;
+  animation: fadeIn 1.5s ease;
+}
+
+#legend-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  margin-top: 3px;
+  border-radius: 2px;
+}
+
+#legend-content {
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+#inset-map {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 240px;
+  height: auto;   /* Ubah dari 320px ke auto */
+  min-height: 550px; /* Tambahkan min-height agar proporsional */
+  border-radius: 12px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+
+  z-index: 9999;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+#inset-map-inner {
+  width: 100%;
+  height: 150px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ✅ TAMBAHAN LEAFLET ATTRIBUTION STYLE */
+.leaflet-control-attribution {  
+  font-size: 7px !important;  
+  opacity: 0.15;  
+  pointer-events: none;  
+}
+#inset-info {
+  position: relative;
+  flex: 1;
+  overflow: visible;
+  padding: 10px 12px;
+
+  color: white;
+  font-family: 'Poppins', sans-serif;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+
+  border-top: 1px solid rgba(255,255,255,0.4);
+
+  font-size: 11px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.inset-subtitle {
+  font-size: 10px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.inset-line {
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+  margin: 6px 0;
+}
+
+.inset-text {
+  font-size: 11px;
+}
+
+.inset-text.small {
+  font-size: 10px;
+  opacity: 0.85;
+}
+#inset-source {
+  margin-top: 10px;
+  padding: 10px 12px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+
+  border-top: 1px solid rgba(255,255,255,0.4);
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+#branding-text {
+  position: absolute;
+  bottom: 10px; 
+  right: 20px;
+  z-index: 10000;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1px;
+  pointer-events: none;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+/* ===== REVISI RESPONSIVE ===== */
+@media screen and (max-width: 820px) {
+  /* 1. Paksa layar penuh agar tidak blank putih */
+  html, body, #view { height: 100% !important; overflow: hidden; }
+
+  /* 2. Judul diperkecil */
+  #map-title-box { top: 10px; left: 10px; max-width: 180px; }
+  #map-title { font-size: 11px !important; line-height: 1.2; margin-bottom: 0; }
+  #map-desc-box, .map-widgets { display: none !important; }
+
+  /* 3. Legenda diperkecil (Agar tidak terlalu besar) */
+  #legend-box { bottom: 15px; left: 10px; max-width: 140px; }
+  #legend-content { padding: 6px; max-height: 150px; overflow-y: auto; }
+  .legend-item { font-size: 8px; margin-bottom: 4px; line-height: 1.1; }
+  .legend-color { width: 8px; height: 8px; margin-right: 5px; }
+
+  /* 4. Inset Map & Keterangan (Dibuat agar muncul saat di-Tap) */
+  #inset-map {
+    top: 10px; right: 10px; width: 100px; 
+    min-height: auto !important; height: auto; cursor: pointer;
+  }
+  #inset-map.expanded { width: 220px; }
+  #inset-map-inner { height: 80px; }
+
+  /* Default sembunyi, muncul saat class 'expanded' aktif */
+  #inset-info, #inset-source { display: none; padding: 8px; font-size: 9px; }
+  #inset-map.expanded #inset-info, 
+  #inset-map.expanded #inset-source { display: flex; flex-direction: column; }
+
+  #inset-map::after {
+    content: "Tap for info"; display: block; text-align: center;
+    font-size: 7px; color: #FFD700; padding: 2px; background: rgba(0,0,0,0.5);
+  }
+  #inset-map.expanded::after { display: none; }
+}
+
+  #branding-text {
+    bottom: 5px;
+    right: 10px;
+    font-size: 7px;
+  }
+}
+/* ===== SELESAI TAMBAHAN SCRIPT RESPONSIVE ===== */
+
+</style>
+<script src="./threejs/three.min.js"></script>
+<script src="./threejs/OrbitControls.js"></script>
+<script src="./threejs/ViewHelper.js"></script>
+<script src="./threejs/OutlineEffect.js"></script>
+<script src="./Qgis2threejs.js"></script>
+</head>
+<body>
+<div id="view">
+
+  <!-- TITLE -->
+<div id="map-title-box">
+    <div id="map-title">
+      Land Availability and Suitability Analysis for Mandalika SEZ Development
+    </div>
+
+    <div id="map-desc-box">
+      This map presents land suitability classification for tourism development based on multi-criteria analysis, including slope, road accessibility, coastline proximity, and points of interest (POI) distribution.
+    </div>
+
+<div class="map-widgets">
+      <div class="north-arrow-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3L16 12H8L12 3Z" fill="white"/>
+          <path d="M12 21L8 12H16L12 21Z" fill="rgba(255,255,255,0.3)"/>
+          <circle cx="12" cy="12" r="1.5" fill="white"/>
+          <text x="10.5" y="11" fill="white" font-family="Poppins" font-size="4" font-weight="700">N</text>
+        </svg>
+      </div>
+      
+      <div class="scale-bar-wrap">
+        <div class="scale-text">
+          <span>0</span>
+          <span>2.5</span>
+          <span>5 km</span>
+        </div>
+        <div class="scale-ruler"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div id="legend-box">
+    <div id="legend-title">Land Suitability</div>
+
+    <div id="legend-content">
+
+      <div class="legend-item">
+        <div class="legend-color" style="background:#8B0000;"></div>
+        <div><b>Restricted Area</b><br>
+        Very steep terrain or limited accessibility.</div>
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-color" style="background:#FF8C00;"></div>
+        <div><b>Limited Development</b><br>
+        Moderate slope and constrained access.</div>
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-color" style="background:#FFD700;"></div>
+        <div><b>Emerging Zone</b><br>
+        Potential area for future tourism growth.</div>
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-color" style="background:#32CD32;"></div>
+        <div><b>Suitable Area</b><br>
+        Favorable conditions for development.</div>
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-color" style="background:#1E90FF;"></div>
+        <div><b>Prime Investment</b><br>
+        Highly accessible and optimal terrain.</div>
+      </div>
+
+    </div> <!-- ✅ TUTUP legend-content -->
+
+  </div> <!-- ✅ TUTUP legend-box -->
+
+<!-- INSET MAP (NEW VERSION) -->
+<div id="inset-map">
+  <div id="inset-map-inner"></div>
+  <div id="inset-info">
+   
+  <div class="inset-title">Mandalika Study Area</div>
+
+  <div class="inset-line"></div>
+
+  <div class="inset-text">
+    <b>Dominant Class:</b> Suitable Area
+  </div>
+
+  <div class="inset-line"></div>
+
+  <div class="inset-text">
+    <b>Interpretation:</b><br>
+    The area is predominantly classified as <i>“Suitable”</i> due to a combination of gentle slope conditions, 
+    good accessibility through existing road networks, and proximity to key tourism points of interest (POIs). 
+    These factors collectively indicate a high potential for sustainable tourism development within the Mandalika region.
+  </div>
+
+  <div class="inset-line"></div>
+
+  <div class="inset-text small">
+    <b>Center:</b> -8.65, 116.33<br>
+    <b>Zoom Level:</b> 8
+  </div>
+    <div id="inset-source">
+  <div class="inset-title">Data Source</div>
+
+  <div class="inset-line"></div>
+
+  <div class="inset-text small">
+    DEM: Badan Informasi Geospasial (BIG)<br>
+    POI: OpenStreetMap / Geofabrik<br>
+    Road & Coastline: Geofabrik + BIG
+  </div>
+</div>
+
+</div> <!-- ini nutup inset-info -->
+</div> <!-- ini nutup inset-map -->
+
+  <!-- NAV -->
+  <div id="northarrow"></div>
+  <div id="navigation"></div>
+
+  <div id="branding-text">@Geoariyadi Spatial System | 2026</div>
+
+</div> <!-- ✅ TUTUP view -->
+
+
+<!-- progress bar -->
+<div id="progress"><div id="progressbar"></div></div>
+
+
+<!-- header and footer -->
+<div id="header"></div>
+<div id="footer"></div>
+
+
+<!-- animation -->
+<div id="narrativebox" class="ef1">
+  <div id="narbody">
+
+  </div>
+  <div id="nextbtn"></div>
+</div>
+
+<script>
+Q3D.Config.bgColor = 0x000000;
+Q3D.Config.viewpoint = {lookAt:{x:428648.00425,y:9025295.09035,z:0},pos:{x:428648.00394936657,y:9025295.023109047,z:22413.874973780545}};
+Q3D.Config.localMode = true;
+
+var container = document.getElementById("view"),
+    app = Q3D.application,
+    gui = Q3D.gui;
+    // Tambahkan ini agar di HP tidak lag/berat
+if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+    app.setPixelRatio(1); 
+}
+
+app.init(container);       // initialize viewer
+
+// load the scene
+app.loadSceneFile("./data/index/scene.js", function (scene) {
+  app.start();
+
+  // INSET MAP - PRO VERSION
+  setTimeout(function () {
+
+    if (typeof L === "undefined") return;
+
+    var inset = L.map('inset-map-inner', {
+      zoomControl: false,
+      attributionControl: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(inset);
+
+    var mandalikaBounds = [
+      [-8.95, 116.05],
+      [-8.55, 116.45]
+    ];
+
+    L.rectangle(mandalikaBounds, {
+      color: "#FFD700",
+      weight: 2,
+      fillOpacity: 0.08
+    }).addTo(inset);
+
+    inset.fitBounds(mandalikaBounds, {
+      padding: [40, 40]
+    });
+
+    var center = inset.getCenter();
+
+    L.circleMarker(center, {
+      radius: 5,
+      color: "#FFD700",
+      fillColor: "#FFD700",
+      fillOpacity: 1
+    }).addTo(inset);
+
+    inset.dragging.disable();
+    inset.scrollWheelZoom.disable();
+    inset.doubleClickZoom.disable();
+    inset.boxZoom.disable();
+    inset.keyboard.disable();
+
+  }, 300);
+
+},
+
+function (scene) {
+  // all associated files loaded
+});
+// --- TEMPEL DI SINI (POINT NO 2) ---
+document.getElementById('inset-map').addEventListener('click', function() {
+    if (window.innerWidth <= 820) {
+        this.classList.toggle('expanded');
+        
+        // PENTING: Tunggu animasi transisi selesai (300ms), lalu refresh peta inset
+        setTimeout(function() {
+            if (typeof inset !== 'undefined') {
+                inset.invalidateSize(); // Memaksa peta muncul jika sebelumnya blank
+                inset.fitBounds(mandalikaBounds);
+            }
+        }, 350);
+    }
+});
+</script>
+</body>
+</html>

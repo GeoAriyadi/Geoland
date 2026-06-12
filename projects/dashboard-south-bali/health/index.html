@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Health Dashboard - Performance Optimized</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+<style>
+    body { margin:0; }
+
+    #mapTitle {
+        position:absolute;
+        top:20px;
+        left:50%;
+        transform:translateX(-50%);
+        background:rgba(255,255,255,0.75);
+        backdrop-filter:blur(10px);
+        padding:10px 18px;
+        border-radius:12px;
+        font-family:'Segoe UI', sans-serif;
+        font-size:14px;
+        font-weight:600;
+        color:#111827;
+        box-shadow:0 4px 20px rgba(0,0,0,0.2);
+        z-index:1000;
+        white-space: nowrap;
+    }
+
+    /* MAP */
+    #mapA, #mapB {
+        height:100vh;
+        width:100%;
+    }
+
+    #mapB { display:none; }
+
+    #tabs {
+        position:absolute;
+        top:80px;
+        left:50%;
+        transform:translateX(-50%);
+        z-index:1000;
+        display:flex;
+        gap:6px;
+    }
+
+    #tabs button {
+        padding:6px 12px;
+        border:none;
+        border-radius:20px;
+        background:rgba(255,255,255,0.7);
+        backdrop-filter: blur(6px);
+        color:#111827;
+        font-size:12px;
+        cursor:pointer;
+        font-weight: 600;
+    }
+
+    #tabs button.active {
+        background:#2563eb;
+        color:white;
+    }
+
+    /* TOOLBOX (INSET, UTARA, SKALA) */
+    .right-toolbox {
+        position: absolute;
+        right: 10px;
+        top: 20%;
+        transform: translateY(-20%);
+        width: 200px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+        z-index: 1000;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        overflow: hidden;
+    }
+
+    .toolbox-title {
+        padding: 8px;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+        background: rgba(255,255,255,0.6);
+    }
+
+    .toolbox-inset-map {
+        width: 100%;
+        height: 130px;
+        background: #f0f0f0;
+    }
+
+    .toolbox-divider {
+        height: 1px;
+        background: rgba(0,0,0,0.1);
+        margin: 0;
+    }
+
+    .toolbox-section {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .north-arrow svg { width: 24px; height: 24px; }
+
+    .scale-wrapper { width: 90%; display: flex; flex-direction: column; }
+    
+    .scale-text {
+        font-size: 10px;
+        color: #444;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4px;
+        font-weight: bold;
+    }
+
+    .scale-ruler {
+        height: 5px;
+        border: 2px solid #444;
+        border-top: none;
+        width: 100%;
+    }
+
+    /* =========================================
+       CSS MEDIA QUERIES UNTUK MOBILE
+       Mencegah Inset & Legend Bertabrakan
+       ========================================= */
+@media (max-width: 768px) {
+
+    /* ===== TITLE ===== */
+    #mapTitle { 
+        width: 88%;
+        top: 8px;
+        padding: 8px 10px;
+        font-size: 11px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    /* ===== TAB BUTTON ===== */
+    #tabs {
+        top: 65px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    #tabs button {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    /* ===== TOOLBOX KANAN ATAS ===== */
+    .right-toolbox {
+        top: 110px;
+        right: 8px;
+        transform: none;
+        width: 130px;
+    }
+
+    .toolbox-title {
+        font-size: 9px;
+        padding: 6px;
+    }
+
+    .toolbox-inset-map {
+        height: 80px;
+    }
+
+    .toolbox-section {
+        padding: 6px;
+    }
+
+    .north-arrow svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .scale-text {
+        font-size: 8px;
+    }
+
+    .scale-ruler {
+        height: 4px;
+    }
+
+    /* ===== DESCRIPTION BOX KIRI BAWAH ===== */
+    .leaflet-bottom.leaflet-left {
+        margin-left: 8px;
+        margin-bottom: 8px;
+        max-width: 170px;
+        transform: scale(0.85);
+        transform-origin: bottom left;
+    }
+
+    /* ===== LEGEND KANAN BAWAH ===== */
+    .leaflet-bottom.leaflet-right {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        max-width: 140px;
+        transform: scale(0.85);
+        transform-origin: bottom right;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="mapTitle">Healthcare Service Coverage and Catchment Areas (Voronoi-Based Analysis)</div>
+
+<div id="tabs">
+    <button id="btnA" onclick="showMap('A')">Service Area (voronoi)</button>
+    <button id="btnB" onclick="showMap('B')">Accessibility (District)</button>
+</div>
+
+<!-- Toolbox Map A -->
+<div id="toolbox-A" class="right-toolbox">
+    <div class="toolbox-title">📍 Context - Map A</div>
+    <div id="inset-map-A" class="toolbox-inset-map"></div>
+    <div class="toolbox-divider"></div>
+    <div class="toolbox-section">
+        <div class="north-arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3L16 12H8L12 3Z" fill="#333"/>
+                <path d="M12 21L8 12H16L12 21Z" fill="#999"/>
+                <circle cx="12" cy="12" r="1.5" fill="#333"/>
+                <text x="10.5" y="10" fill="#333" font-size="4" font-weight="bold">N</text>
+            </svg>
+        </div>
+    </div>
+    <div class="toolbox-divider"></div>
+    <div class="toolbox-section">
+        <div class="scale-wrapper">
+            <div class="scale-text"><span>0</span><span>2.5</span><span>5 km</span></div>
+            <div class="scale-ruler"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Toolbox Map B -->
+<div id="toolbox-B" class="right-toolbox" style="display:none;">
+    <div class="toolbox-title">📍 Context - Map B</div>
+    <div id="inset-map-B" class="toolbox-inset-map"></div>
+    <div class="toolbox-divider"></div>
+    <div class="toolbox-section">
+        <div class="north-arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3L16 12H8L12 3Z" fill="#333"/>
+                <path d="M12 21L8 12H16L12 21Z" fill="#999"/>
+                <circle cx="12" cy="12" r="1.5" fill="#333"/>
+                <text x="10.5" y="10" fill="#333" font-size="4" font-weight="bold">N</text>
+            </svg>
+        </div>
+    </div>
+    <div class="toolbox-divider"></div>
+    <div class="toolbox-section">
+        <div class="scale-wrapper">
+            <div class="scale-text"><span>0</span><span>2.5</span><span>5 km</span></div>
+            <div class="scale-ruler"></div>
+        </div>
+    </div>
+</div>
+
+<div id="mapA"></div>
+<div id="mapB"></div>
+
+<script>
+const CONFIG = {
+    geojson: {
+        voronoi: "./voronoi_health.geojson",
+        access: "./access_hospital.geojson",
+        admin: "./admin_south_bali.geojson",
+        hospital: "./hospital_point.geojson",
+        timezone: "./health_timezone.geojson",
+    }
+};
+
+/////////////////////////////
+// INITIALIZE MAPS
+/////////////////////////////
+const centerBali = [-8.65, 115.2];
+var mapA = L.map('mapA', { preferCanvas: true }).setView(centerBali, 11);
+var mapB = L.map('mapB', { preferCanvas: true }).setView(centerBali, 11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap | @GeoAriyadi Spatial System | 2026'
+}).addTo(mapA);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap | @GeoAriyadi Spatial System | 2026'
+}).addTo(mapB);
+
+// Hapus tulisan "Leaflet" bawaan
+mapA.attributionControl.setPrefix('');
+mapB.attributionControl.setPrefix('');
+
+/////////////////////////////
+// LAYER MAP A
+/////////////////////////////
+
+let hospitalLayerA = L.geoJSON(null, {
+    filter: (f) => f.geometry.type === 'Point',
+
+    pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, {
+            radius: 6,
+            fillColor: '#DC2626',   // merah rumah sakit
+            color: '#ffffff',       // outline putih
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 1
+        });
+    }
+}).addTo(mapA);
+
+let adminLayerA = L.geoJSON(null, {
+    filter: (f) => f.geometry.type.includes('Polygon'),
+    style: { color:'#000', weight:1, fillOpacity:0, dashArray:'4,4' },
+    interactive: false 
+}).addTo(mapA);
+
+let voronoi = L.geoJSON(null, { 
+    filter: (f) => f.geometry.type.includes('Polygon'),
+    style: function(f) {
+        return {
+            color: '#9CA3AF',
+            weight: 1.2,
+            fillColor: 'transparent',
+            fillOpacity: 0
+        };
+    },
+    onEachFeature: function(f, layer) {
+        const p = f.properties;
+        layer.bindPopup(`
+            <div style="width:220px; font-family:Segoe UI; font-size:13px; line-height:1.5;">
+                <div style="background:#2563eb; color:white; padding:6px; border-radius:6px; margin-bottom:10px; font-weight:bold;">
+                    🏥 Service Area Details
+                </div>
+                <b>Hospital name:</b><br>${p.name || "N/A"}<br>
+                <b>Population Covered:</b><br>${p.population_covered || "N/A"}<br>
+                <b>Covered Area:</b><br>${p.covered_area || "N/A"}<br>
+                <b>Interpretation:</b><br>${p.description || "N/A"}<br>
+            </div>
+        `);
+    }
+}).addTo(mapA);
+
+let healthAccessA = L.geoJSON(null, {
+    filter: (f) => f.geometry.type.includes('Polygon'),
+    interactive: false,
+    style: function(f) {
+        // Ambil data, pastikan jadi angka. Gunakan || 0 agar jika null tidak error.
+        let access = parseFloat(f.properties.aa_mins || f.properties.AA_MINS || 0); 
+        let fill = '#d1d5db'; // Warna abu-abu terang jika data tidak cocok (pengganti hilang)
+
+        if (access > 0 && access <= 5) fill = '#32CD32';      // 0-5 Menit (Hijau)
+        else if (access > 5 && access <= 10) fill = '#FF8C00'; // 5-10 Menit (Oranye)
+        else if (access > 10) fill = '#8B0000';                // > 10 Menit (Merah Tua)
+        
+        return { 
+            color: 'white', 
+            weight: 0.3, // Kasih garis tipis agar antar polygon tidak terlihat pecah
+            fillColor: fill, 
+            fillOpacity: 0.7 
+        };
+    }
+}).addTo(mapA);
+
+const overlayA = {
+    "Hospitals": hospitalLayerA,
+    "Voronoi Service Area": voronoi,
+    "Administrative Boundary": adminLayerA,
+    "Health Access Time": healthAccessA
+};
+L.control.layers(null, overlayA).addTo(mapA);
+
+/////////////////////////////
+// LAYER MAP B
+/////////////////////////////
+
+let hospitalLayerB = L.geoJSON(null, {
+    filter: (f) => f.geometry.type === 'Point',
+
+    pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, {
+            radius: 6,
+            fillColor: '#DC2626',   // merah rumah sakit
+            color: '#ffffff',       // outline putih
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 1
+        });
+    }
+}).addTo(mapB);
+
+let adminLayerB = L.geoJSON(null, {
+    filter: (f) => f.geometry.type.includes('Polygon'),
+    style: { color:'#000', weight:1, fillOpacity:0, dashArray:'4,4' },
+    interactive: false 
+}).addTo(mapB);
+
+let accessLayerB = L.geoJSON(null, {
+    filter: (f) => f.geometry.type.includes('Polygon'),
+    style: function(f) {
+        // Ambil teks, hapus spasi, dan jadikan huruf kecil
+        let access = String(f.properties.access_category || "").trim().toLowerCase();
+        let fill = '#d1d5db'; // Default abu-abu
+
+        if (access.includes('high')) fill = '#32CD32';
+        else if (access.includes('moderate')) fill = '#FF8C00';
+        else if (access.includes('low')) fill = '#FFD700';
+
+        return { 
+            color: 'white', 
+            weight: 0.5, 
+            fillColor: fill, 
+            fillOpacity: 0.7 
+        };
+    },
+    onEachFeature: function(f, layer) {
+        layer.bindPopup(buildPopupB(f.properties));
+    }
+}).addTo(mapB);
+
+const overlayB = {
+    "Administrative Boundary": adminLayerB,
+    "Accessibility Layer": accessLayerB
+};
+L.control.layers(null, overlayB).addTo(mapB);
+
+/////////////////////////////
+// FETCH DATA SEKALIGUS (OPTIMASI)
+/////////////////////////////
+/////////////////////////////
+// FETCH DATA SEKALIGUS (OPTIMASI)
+/////////////////////////////
+Promise.all([
+    fetch(CONFIG.geojson.voronoi).then(r => r.json()),   // Index 0
+    fetch(CONFIG.geojson.access).then(r => r.json()),    // Index 1 (Data untuk Map B)
+    fetch(CONFIG.geojson.admin).then(r => r.json()),     // Index 2
+    fetch(CONFIG.geojson.hospital).then(r => r.json()),  // Index 3
+    fetch(CONFIG.geojson.timezone).then(r => r.json())   // Index 4 (Data untuk Map A)
+]).then(([voronoiData, analysisData, adminData, hospitalData, timezoneData]) => { 
+
+    // 1. Masukkan data dasar dulu
+    adminLayerA.addData(adminData);
+    adminLayerB.addData(adminData);
+
+    // 2. Masukkan data warna (Health Access / Timezone) - taruh di bawah
+    healthAccessA.addData(timezoneData);
+    accessLayerB.addData(analysisData);
+
+    // 3. Masukkan data garis & point (Voronoi & Hospital) - taruh di atas
+    voronoi.addData(voronoiData);
+    hospitalLayerA.addData(hospitalData);
+    hospitalLayerB.addData(hospitalData);
+
+    // 4. Paksa urutan visual
+    voronoi.bringToFront();
+    hospitalLayerA.bringToFront();
+    hospitalLayerB.bringToFront();
+
+}).catch(err => {
+    console.error("Cek console log untuk detail error:", err);
+});
+
+/////////////////////////////
+// LEGENDA & DESKRIPSI
+/////////////////////////////
+/////////////////////////////
+// LEGENDA MAP A
+/////////////////////////////
+const legend = L.control({ position: "bottomright" });
+legend.onAdd = function () {
+    const div = L.DomUtil.create("div");
+    div.innerHTML = `
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 12px; backdrop-filter: blur(15px); font-family: 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.5; min-width: 150px; color: #1f2937; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 20px;">
+        
+        <div style="font-weight: 800; font-size: 13px; margin-bottom: 10px; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px;">
+            📍 Map Legend A
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <span style="font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; display: block; margin-bottom: 6px;">
+                Reference Layer
+            </span>
+            <div style="display:flex; align-items:center; margin-bottom:4px;">
+                <div style="width:10px; height:10px; background:#DC2626; border:2px solid #fff; border-radius:50%; margin-right:10px; box-shadow:0 0 2px rgba(0,0,0,0.3);"></div>
+                <span>Hospital Facility</span>
+            </div>
+            <div style="display:flex; align-items:center; margin-bottom:4px;">
+                <div style="width:12px; height:12px; border:1.5px solid #9CA3AF; background:transparent; margin-right:8px;"></div>
+                <span>Hospital Service Area</span>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <div style="width:14px; border-top:2px dashed #000; margin-right:8px;"></div>
+                <span>Administrative Boundary</span>
+            </div>
+        </div>
+
+        <div>
+            <span style="font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; display: block; margin-bottom: 6px;">
+                Access Times
+            </span>
+            <div style="display:flex; align-items:center; margin-bottom:4px;"><div style="width:12px; height:12px; background:#32CD32; border-radius: 3px; margin-right:8px;"></div><span>0 - 5 Minutes</span></div>
+            <div style="display:flex; align-items:center; margin-bottom:4px;"><div style="width:12px; height:12px; background:#FF8C00; border-radius: 3px; margin-right:8px;"></div><span>5 - 10 Minutes</span></div>
+            <div style="display:flex; align-items:center; margin-bottom:4px;"><div style="width:12px; height:12px; background:#8B0000; border-radius: 3px; margin-right:8px;"></div><span>> 10 Minutes</span></div>
+        </div>
+    </div>`;
+    return div;
+};
+legend.addTo(mapA);
+
+/////////////////////////////
+// LEGENDA MAP B
+/////////////////////////////
+const legendB = L.control({ position: "bottomright" });
+legendB.onAdd = function () {
+    const div = L.DomUtil.create("div");
+    div.innerHTML = `
+    <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 12px; backdrop-filter: blur(15px); font-family: 'Segoe UI', sans-serif; font-size: 12px; line-height: 1.5; min-width: 150px; color: #1f2937; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.3); margin-bottom: 20px;">
+        
+        <div style="font-weight: 800; font-size: 13px; margin-bottom: 10px; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px;">
+            📍 Map Legend B
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <span style="font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; display: block; margin-bottom: 6px;">
+                Reference Layer
+            </span>
+            <div style="display:flex; align-items:center; margin-bottom:4px;">
+                <div style="width:10px; height:10px; background:#DC2626; border:2px solid #fff; border-radius:50%; margin-right:10px; box-shadow:0 0 2px rgba(0,0,0,0.3);"></div>
+                <span>Hospital Facility</span>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <div style="width:14px; border-top:2px dashed #000; margin-right:8px;"></div>
+                <span>Administrative Boundary</span>
+            </div>
+        </div>
+
+        <div>
+            <span style="font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; display: block; margin-bottom: 6px;">
+                Access Level
+            </span>
+            <div style="display:flex; align-items:center; margin-bottom:4px;"><div style="width:12px; height:12px; background:#32CD32; border-radius:3px; margin-right:8px;"></div><span>High Accessibility</span></div>
+            <div style="display:flex; align-items:center; margin-bottom:4px;"><div style="width:12px; height:12px; background:#FF8C00; border-radius:3px; margin-right:8px;"></div><span>Moderate</span></div>
+            <div style="display:flex; align-items:center;"><div style="width:12px; height:12px; background:#FFD700; border-radius:3px; margin-right:8px;"></div><span>Low Accessibility</span></div>
+        </div>
+    </div>`;
+    return div;
+};
+legendB.addTo(mapB);
+
+const descriptionBox = L.control({ position: "bottomleft" });
+descriptionBox.onAdd = function () {
+    const div = L.DomUtil.create("div");
+    div.innerHTML = `
+    <div style="
+        background: rgba(255, 255, 255, 0.8);
+        padding: 16px;
+        border-radius: 12px;
+        backdrop-filter: blur(15px);
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        max-width: 260px;
+        color: #1f2937;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        margin-bottom: 30px;
+    ">
+        <div style="
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        ">
+            📊 Spatial Insights
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <b style="color:#2563eb;">1. Spatial Clustering</b><br>
+            Voronoi Tessellation defines the theoretical catchment areas, prioritizing the nearest facility based on Euclidean proximity.
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <b style="color:#2563eb;">2. Spillover Access</b><br>
+            Large polygon variations identify underserved sectors, highlighting potential gaps where emergency response might be delayed.
+        </div>
+
+        <div style="margin-bottom: 12px;">
+            <b style="color:#2563eb;">3. Peripheral Gaps</b><br>
+            Extensive service zones indicate high spatial load, suggesting the need for facility expansion or decentralized satellite clinics.
+        </div>
+
+        <div style="
+            background: rgba(37, 99, 235, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+            font-size: 12px;
+            color: #1e40af;
+        ">
+            💡 <b>User Guide:</b><br>
+            Click or tap on any zone to explore details.
+        </div>
+    </div>`;
+    return div;
+};
+descriptionBox.addTo(mapA);
+
+
+const descriptionBoxB = L.control({ position: "bottomleft" });
+descriptionBoxB.onAdd = function () {
+    const div = L.DomUtil.create("div");
+    div.innerHTML = `
+    <div style="
+        background: rgba(255, 255, 255, 0.8);
+        padding: 16px;
+        border-radius: 12px;
+        backdrop-filter: blur(15px);
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        max-width: 260px;
+        color: #1f2937;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        margin-bottom: 30px;
+    ">
+        <div style="
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        ">
+            🗺️ Regional Insights
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <b style="color:#059669;">1. Service Pressure</b><br>
+            Healthcare accessibility is heavily centralized, indicating significant urban clustering within the metropolitan core.
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <b style="color:#059669;">2. Hidden Inequality</b><br>
+            Peripheral zones exhibit diminished service reach, highlighting a <b>spatial inequality</b> in suburban healthcare distribution.
+        </div>
+
+        <div style="margin-bottom: 12px;">
+            <b style="color:#059669;">3. Demand Advantage</b><br>
+            Accessibility is a function of both facility density and the efficiency of the underlying road network.
+        </div>
+
+        <div style="
+            background: rgba(5, 150, 105, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #059669;
+            font-size: 12px;
+            color: #065f46;
+        ">
+            💡 <b>User Guide:</b><br>
+            Click or tap on any district to explore details.
+        </div>
+    </div>`;
+    return div;
+};
+descriptionBoxB.addTo(mapB);
+
+/////////////////////////////
+// INSET MAP & SINKRONISASI
+/////////////////////////////
+function renderModernInset(elementId, centerCoords) {
+    const inset = L.map(elementId, {
+        zoomControl: false, attributionControl: false, dragging: false,
+        scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false
+    });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(inset);
+    inset.setView(centerCoords, 9);
+    return inset;
+}
+var insetA = renderModernInset('inset-map-A', centerBali);
+var insetB = renderModernInset('inset-map-B', centerBali);
+
+function syncInset(mainMap, insetMap) {
+    var rect = L.rectangle(mainMap.getBounds(), { color: "#ff7800", weight: 1, fillOpacity: 0.2 }).addTo(insetMap);
+    mainMap.on('move', function() {
+        insetMap.setView(mainMap.getCenter(), insetMap.getZoom());
+        rect.setBounds(mainMap.getBounds());
+    });
+}
+syncInset(mapA, insetA);
+syncInset(mapB, insetB);
+
+/////////////////////////////
+// POPUP BUILDER B
+/////////////////////////////
+function buildPopupB(props) { 
+    if (!props) return "No data available";
+    return `
+    <div style="width:200px; font-family:Segoe UI; font-size:13px; line-height:1.5;">
+        <div style="background:#1E90FF; color:white; padding:6px; border-radius:6px; margin-bottom:10px; font-weight:bold;">
+            📍 Service Area Details
+        </div>
+        <b>District:</b> ${props.district || "-"}<br>
+        <b>Access ratio:</b> ${props.access_ratio || "-"}<br>
+        <b>Service Status:</b> ${props.service_status || "-"}<br>
+        <b>Interpretation:</b> ${props.description || "-"} 
+    </div>
+    `;
+}
+
+/////////////////////////////
+// SWITCH MAP LOGIC
+/////////////////////////////
+function updateTitle(type) {
+    const title = document.getElementById("mapTitle");
+    if (type === 'A') {
+        title.innerHTML = "Healthcare Service Coverage and Catchment Areas (Voronoi-Based Analysis)";
+    } else {
+        title.innerHTML = "Spatial Accessibility to Healthcare Facilities (Administrative Level)";
+    }
+}
+
+function showMap(type) {
+    const isA = type === 'A';
+    
+    document.getElementById('mapA').style.display = isA ? 'block' : 'none';
+    document.getElementById('mapB').style.display = isA ? 'none' : 'block';
+    
+    document.getElementById('toolbox-A').style.display = isA ? 'flex' : 'none';
+    document.getElementById('toolbox-B').style.display = isA ? 'none' : 'flex';
+    
+    document.getElementById('btnA').className = isA ? 'active' : '';
+    document.getElementById('btnB').className = isA ? '' : 'active';
+    
+    updateTitle(type);
+
+    if (isA) {
+        mapA.invalidateSize();
+        insetA.invalidateSize();
+    } else {
+        mapB.invalidateSize();
+        insetB.invalidateSize();
+    }
+}
+
+// Inisialisasi awal
+showMap('A');
+
+</script>
+</body>
+</html>

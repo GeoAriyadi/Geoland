@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Integrated Spatial Policy Support System (SPSS) - South Bali Region</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:#f6f8fb;
+  color:#0f172a;
+  line-height:1.6;
+}
+html{scroll-behavior:smooth}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92%);margin:auto}
+
+/* Header */
+header{
+  position:sticky; top:0; z-index:1000;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #e2e8f0;
+}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand h1{font-size:1.1rem;color:#0f172a}
+.brand p{font-size:.8rem;color:#64748b}
+.nav-links a{margin-left:22px;color:#475569;font-size:.95rem}
+.nav-links a:hover{color:#0ea5e9}
+
+/* Hero */
+.hero{padding:70px 0 50px;background:linear-gradient(180deg,#ffffff,#f8fafc)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.badge{
+  display:inline-block;padding:8px 14px;border-radius:999px;
+  background:#e0f2fe;color:#0369a1;font-size:.85rem;font-weight:600;
+  margin-bottom:18px;
+}
+.hero h2{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;margin-bottom:18px}
+.hero p{color:#64748b;max-width:620px}
+.hero-card{
+  background:white;border:1px solid #e2e8f0;border-radius:20px;padding:20px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+.hero-card img{border-radius:14px}
+
+/* Summary */
+.summary{padding:30px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{
+  background:white;padding:20px;border-radius:16px;border:1px solid #e2e8f0;
+}
+.stat h3{font-size:1.4rem;color:#0284c7}
+.stat p{font-size:.9rem;color:#64748b}
+
+/* Theme cards */
+.section{padding:50px 0}
+.section h3{font-size:1.8rem;margin-bottom:10px}
+.section-sub{color:#64748b;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.theme-card{
+  background:white;border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;
+  transition:.25s; box-shadow:0 8px 24px rgba(15,23,42,.04);
+}
+.theme-card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(15,23,42,.08)}
+.theme-card img{height:180px;width:100%;object-fit:cover}
+.theme-content{padding:20px}
+.theme-content p{color:#64748b;font-size:.95rem;margin:10px 0 18px}
+.tag{display:inline-block;font-size:.75rem;padding:6px 10px;background:#f1f5f9;border-radius:999px;color:#475569;margin-bottom:8px}
+.btn{
+  display:inline-block;padding:10px 16px;border-radius:10px;
+  background:#0ea5e9;color:white;font-weight:600;font-size:.92rem;
+}
+
+/* Methodology */
+.method{
+  background:#0f172a;color:white;border-radius:24px;padding:34px;
+}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+.method-box{background:rgba(255,255,255,.06);padding:18px;border-radius:14px}
+.method-box p{color:#cbd5e1;font-size:.92rem}
+
+footer{text-align:center;padding:30px;color:#64748b}
+
+@media(max-width:900px){
+.hero-grid,.stats,.method-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- EDIT: This is the landing page inside projects/dashboard-south-bali/index.html -->
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <h1>Spatial Intelligence Dashboard</h1>
+      <p>South Bali Region</p>
+    </div>
+    <div class="nav-links">
+      <a href="../../">← Portfolio Home</a>
+      <a href="#themes">Themes</a>
+      <a href="#methodology">Methodology</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">Interactive Multi-Theme GIS Dashboard</div>
+      <h2>Integrated Spatial Policy Support System (SPSS)</h2>
+      <p><!-- EDIT --> A professional WebGIS platform integrating multi-sector spatial analysis across education, healthcare, accessibility, and tourism pressure to support data-driven territorial insights.</p>
+    </div>
+    <div class="hero-card">
+      <img src="../../assets/img/dash-prev.jpeg" alt="Dashboard Preview">
+      <!-- EDIT: add preview image -->
+    </div>
+  </div>
+</section>
+
+<section class="summary">
+  <div class="container stats">
+    <div class="stat"><h3>4 Assessment Frameworks</h3><p>Structured multi-criteria evaluation models for regional analysis.</p></div>
+    <div class="stat"><h3>8 Interactive Maps</h3><p>High-precision dynamic spatial intelligence visualizations.</p></div>
+    <div class="stat"><h3>Integrated Core Engines</h3><p>Enterprise-grade geospatial technology stack and architecture</p></div>
+    <div class="stat"><h3>10+ Data Layers</h3><p>High-density multisource geospatial datasets.</p></div>
+  </div>
+</section>
+
+<section id="themes" class="section">
+  <div class="container">
+    <h3>Assessment Frameworks</h3>
+    <p class="section-sub">Select a specialized framework to evaluate regional spatial dynamics.</p>
+
+    <div class="grid">
+
+      <div class="theme-card">
+        <img src="../../assets/img/edu-south-bali.jpg" alt="Education">
+        <div class="theme-content">
+          <div class="tag">Education Access</div>
+          <h4>Education Infrastructure</h4>
+          <p><!-- EDIT --> Analyze school accessibility, service coverage, and educational equity.</p>
+          <a class="btn" href="./education/">Open Theme</a>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <img src="../../assets/img/health-south-bali.jpg" alt="Health">
+        <div class="theme-content">
+          <div class="tag">Healthcare Access</div>
+          <h4>Health Services</h4>
+          <p><!-- EDIT --> Evaluate hospital reachability and healthcare spatial distribution.</p>
+          <a class="btn" href="./health/">Open Theme</a>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <img src="../../assets/img/access-south-bali.jpg" alt="Accessibility">
+        <div class="theme-content">
+          <div class="tag">Spatial Equity</div>
+          <h4>Accessibility & Equity</h4>
+          <p><!-- EDIT --> Explore network-based accessibility and spatial equity indicators.</p>
+          <a class="btn" href="./accessibility-spatial-equity/">Open Theme</a>
+        </div> 
+      </div>
+
+      <div class="theme-card">
+        <img src="../../assets/img/tourism-south-bali.jpg" alt="Tourism">
+        <div class="theme-content">
+          <div class="tag">Urban Pressure</div>
+          <h4>Tourism & Urban Pressure</h4>
+          <p><!-- EDIT --> Examine tourism density, infrastructure stress, and development pressure.</p>
+          <a class="btn" href="./tourism-urban-pressure/">Open Theme</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="methodology" class="section">
+  <div class="container method">
+    <h3>Methodological Framework</h3>
+    <div class="method-grid">
+      <div class="method-box">
+        <h4>Spatial Data Engineering</h4>
+        <p>High-performance data cleaning, topology validation, and multi-source layer optimization.</p>
+      </div>
+      <div class="method-box">
+        <h4>Advanced Geospatial Modeling</h4>
+        <p>Multi-Criteria Evaluation (MCE), weighted overlay, and network-based proximity modeling.</p>
+      </div>
+      <div class="method-box">
+        <h4>Decision Support System (DSS)</h4>
+        <p>Strategic intelligence reporting, regional accessibility assessment, and policy-ready insights.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  South Bali Spatial Intelligence Dashboard • 2026
+</footer>
+
+</body>
+</html>
