@@ -219,6 +219,11 @@ section { padding: 80px 0; }
   overflow: hidden;
   border: 1px solid rgba(56, 189, 248, 0.2);
   box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  
+  /* --- TAMBAHKAN INI UNTUK PC --- */
+  max-width: 280px; /* Batasi lebar maksimal foto di PC, misal jadi 380px */
+  margin-left: auto; /* Biar fotonya nengah klo di kolom kiri */
+  margin-right: auto;
 }
 .about-image-wrap img { width: 100%; aspect-ratio: 1/1.1; object-fit: cover; }
 .about-details {
@@ -315,7 +320,11 @@ footer { text-align: center; padding: 40px 0; color: #64748b; font-size: 0.9rem;
 
   /* 4. Pengaturan About & Contact (bawaan script kamu yang sudah benar) */
   .about-grid { grid-template-columns: 1fr; gap: 30px; }
-  .about-image-wrap { max-width: 100%; margin: 0 auto; }
+  .about-image-wrap { 
+    max-width: 150px; /* Bikin ukurannya jadi imut di HP (misal 180px) */
+    margin: 0 auto;  /* Tetap rata tengah */
+    border-radius: 50%; /* Opsional: Klo mau fotonya jadi bulat di HP */
+  }
   .contact-channels { grid-template-columns: 1fr; gap: 15px; }
 }
 </style>
