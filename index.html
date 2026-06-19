@@ -300,9 +300,22 @@ footer { text-align: center; padding: 40px 0; color: #64748b; font-size: 0.9rem;
 
 /* ===== RESPONSIVE MEDIA QUERIES ===== */
 @media(max-width: 900px) {
-  nav { display: none; } /* Framework navigasi mobile dapat disesuaikan */
+  /* 1. Atur ulang Header & Navigasi agar tidak hilang */
+  .nav-wrap { flex-direction: column; gap: 15px; text-align: center; }
+  nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+  nav a { margin-left: 0; font-size: 0.9rem; }
+
+  /* 2. Perkecil spasi (padding) yang terlalu memakan tempat di HP */
+  section { padding: 40px 0; }
+  .hero-corporate { padding: 30px 0 20px 0; }
+  .hero-corporate h1 { font-size: 2rem; } /* Sesuaikan ukuran judul */
+
+  /* 3. Paksa grid galeri peta menjadi 1 baris ke bawah */
+  .project-grid { grid-template-columns: 1fr; }
+
+  /* 4. Pengaturan About & Contact (bawaan script kamu yang sudah benar) */
   .about-grid { grid-template-columns: 1fr; gap: 30px; }
-  .about-image-wrap { max-width: 320px; margin: 0 auto; }
+  .about-image-wrap { max-width: 100%; margin: 0 auto; }
   .contact-channels { grid-template-columns: 1fr; gap: 15px; }
 }
 </style>
