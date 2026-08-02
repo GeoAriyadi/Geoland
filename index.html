@@ -956,17 +956,65 @@ Explore the powerful capabilities that transform nationwide geospatial data into
 </main>
 
 <main id="tour-view" class="view-section">
-
 <section class="container">
 
 <h2 class="section-title">Product Tour</h2>
 
 <p class="section-sub">
-Explore GeoLand through short feature demonstrations and discover how each capability works in real-world spatial analysis.
+Explore every GeoLand capability through short interactive walkthroughs.
+Select a feature below to watch the demonstration.
 </p>
 
+<div class="features-grid">
 
-///////////////////////////////////////////////////////////////////////////////////////////
+<div class="feature-card" onclick="switchView('tour-ai')">
+<div class="feature-icon">🧠</div>
+<h3>AI Recommendation Engine</h3>
+<p>AI-powered business location recommendation.</p>
+</div>
+
+<div class="feature-card" onclick="switchView('tour-assistant')">
+<div class="feature-icon">🤖</div>
+<h3>GeoLand AI Assistant</h3>
+<p>Natural language spatial assistant.</p>
+</div>
+
+<div class="feature-card" onclick="switchView('tour-batch')">
+<div class="feature-icon">📊</div>
+<h3>Batch Location Analysis</h3>
+<p>Analyze hundreds of locations simultaneously.</p>
+</div>
+
+<div class="feature-card" onclick="switchView('tour-building')">
+<div class="feature-icon">🏢</div>
+<h3>3D Building Intelligence</h3>
+<p>Interactive nationwide building visualization.</p>
+</div>
+
+<div class="feature-card" onclick="switchView('tour-report')">
+<div class="feature-icon">📄</div>
+<h3>AI Spatial Reports</h3>
+<p>Generate professional PDF reports.</p>
+</div>
+
+</div>
+
+<div class="back-home-container">
+<a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
+</div>
+
+</section>
+</main>
+
+
+<main id="tour-ai" class="view-section">
+<section class="container">
+
+<h2 class="section-title">AI Recommendation Engine</h2>
+
+<p class="section-sub">
+Learn how GeoLand identifies the most strategic business and investment locations using AI-powered nationwide spatial analysis.
+</p>
 
 <div class="tour-stack">
 
@@ -975,7 +1023,7 @@ Explore GeoLand through short feature demonstrations and discover how each capab
 <div class="tour-header">
 <h3>AI Recommendation Engine</h3>
 <p>
-Discover strategic business locations using AI-powered spatial analysis and nationwide geographic intelligence.
+GeoLand analyzes accessibility, commercial activity, surrounding POIs, demographics, road connectivity, and regional growth to recommend the highest-potential locations for your business.
 </p>
 </div>
 
@@ -990,31 +1038,48 @@ Your browser does not support video.
 
 <div class="tour-step">
 <span>Step 1</span>
-<p>Select your business category.</p>
+<p>Select your preferred business category such as restaurant, café, minimarket, pharmacy, warehouse, or other business types.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 2</span>
-<p>Enter your investment budget.</p>
+<p>Enter your available investment budget to filter locations based on your financial capacity.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 3</span>
-<p>GeoLand analyzes spatial indicators and recommends high-potential locations.</p>
+<p>GeoLand evaluates millions of nationwide spatial records and instantly recommends the best locations with AI-generated suitability scores.</p>
 </div>
 
 </div>
 
 </div>
 
+<div class="back-home-container">
+<a onclick="switchView('tour-view')" class="btn btn-secondary">
+← Back to Product Tour
+</a>
+</div>
+
+</section>
+</main>
+
+<main id="tour-assistant" class="view-section">
+<section class="container">
+
+<h2 class="section-title">GeoLand AI Assistant</h2>
+
+<p class="section-sub">
+Interact with GeoLand using natural language to discover locations and receive AI-powered spatial insights.
+</p>
+
+<div class="tour-stack">
 
 <div class="tour-card">
 
 <div class="tour-header">
 <h3>GeoLand AI Assistant</h3>
-<p>
-Interact with GeoLand using natural language to explore locations and receive AI-powered spatial insights.
-</p>
+<p>Ask GeoLand questions in plain language and instantly receive intelligent spatial analysis.</p>
 </div>
 
 <div class="tour-media">
@@ -1033,26 +1098,42 @@ Your browser does not support video.
 
 <div class="tour-step">
 <span>Step 2</span>
-<p>Ask location-based questions using natural language.</p>
+<p>Ask questions such as "Best area for a coffee shop" or "Show high-growth districts".</p>
 </div>
 
 <div class="tour-step">
 <span>Step 3</span>
-<p>Receive AI-generated spatial recommendations and insights.</p>
+<p>GeoLand analyzes nationwide spatial data and returns AI-generated recommendations.</p>
 </div>
 
 </div>
 
 </div>
 
+<div class="back-home-container">
+<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+</div>
+
+</section>
+</main>
+
+
+<main id="tour-batch" class="view-section">
+<section class="container">
+
+<h2 class="section-title">Batch Location Analysis</h2>
+
+<p class="section-sub">
+Analyze hundreds or even thousands of locations in a single process.
+</p>
+
+<div class="tour-stack">
 
 <div class="tour-card">
 
 <div class="tour-header">
 <h3>Batch Location Analysis</h3>
-<p>
-Analyze multiple locations simultaneously using GeoLand batch processing capabilities.
-</p>
+<p>Upload coordinate datasets and let GeoLand evaluate every location automatically.</p>
 </div>
 
 <div class="tour-media">
@@ -1066,31 +1147,46 @@ Your browser does not support video.
 
 <div class="tour-step">
 <span>Step 1</span>
-<p>Upload your location dataset.</p>
+<p>Upload a CSV file containing latitude and longitude coordinates.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 2</span>
-<p>Select business category and analysis parameters.</p>
+<p>Select the business category and analysis settings.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 3</span>
-<p>GeoLand processes multiple locations and generates recommendations.</p>
+<p>GeoLand evaluates every location and generates downloadable AI recommendations.</p>
 </div>
 
 </div>
 
 </div>
 
+<div class="back-home-container">
+<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+</div>
+
+</section>
+</main>
+
+<main id="tour-building" class="view-section">
+<section class="container">
+
+<h2 class="section-title">3D Building Intelligence</h2>
+
+<p class="section-sub">
+Explore more than 120 million building footprints across Indonesia with smooth 3D visualization and building-level intelligence.
+</p>
+
+<div class="tour-stack">
 
 <div class="tour-card">
 
 <div class="tour-header">
 <h3>3D Building Intelligence</h3>
-<p>
-Explore nationwide building footprints through interactive 3D visualization and spatial analysis.
-</p>
+<p>Navigate seamlessly across Indonesia and inspect individual buildings together with their surrounding spatial context.</p>
 </div>
 
 <div class="tour-media">
@@ -1104,31 +1200,47 @@ Your browser does not support video.
 
 <div class="tour-step">
 <span>Step 1</span>
-<p>Navigate to any location in Indonesia.</p>
+<p>Navigate to any city, district, or coordinate in Indonesia.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 2</span>
-<p>Explore buildings and surrounding spatial information.</p>
+<p>Zoom into the map to display interactive 3D buildings.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 3</span>
-<p>Analyze urban characteristics through 3D visualization.</p>
+<p>Select a building to explore property information and surrounding spatial intelligence.</p>
 </div>
 
 </div>
 
 </div>
 
+<div class="back-home-container">
+<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+</div>
+
+</section>
+</main>
+
+
+<main id="tour-report" class="view-section">
+<section class="container">
+
+<h2 class="section-title">AI Spatial Reports</h2>
+
+<p class="section-sub">
+Generate professional PDF reports that summarize AI-generated location intelligence and spatial analysis.
+</p>
+
+<div class="tour-stack">
 
 <div class="tour-card">
 
 <div class="tour-header">
 <h3>AI Spatial Reports</h3>
-<p>
-Generate professional reports containing location intelligence and AI-generated spatial insights.
-</p>
+<p>Create presentation-ready reports containing maps, property information, AI summaries, and investment insights.</p>
 </div>
 
 <div class="tour-media">
@@ -1142,19 +1254,17 @@ Your browser does not support video.
 
 <div class="tour-step">
 <span>Step 1</span>
-<p>Select a location or property analysis.</p>
+<p>Select a property or recommendation result.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 2</span>
-<p>Generate AI-powered spatial analysis results.</p>
+<p>Generate the AI-powered spatial report.</p>
 </div>
 
 <div class="tour-step">
 <span>Step 3</span>
-<p>Export a professional PDF report.</p>
-</div>
-
+<p>Download a professional PDF ready to share with clients and stakeholders.</p>
 </div>
 
 </div>
@@ -1162,14 +1272,12 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('home-view')" class="btn btn-secondary">
-← Back to Home
-</a>
+<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
 </div>
 
 </section>
-
 </main>
+
 
 <main id="gallery-view" class="view-section">
   <section class="container">
@@ -1306,28 +1414,45 @@ My experience spans the entire geospatial workflow, from aerial imagery processi
 <footer>© 2026 GeoLand | Geospatial Intelligence Solutions</footer>
 
 <script>
-function switchView(viewId) {
-  const views = document.querySelectorAll('.view-section');
-  views.forEach(view => {
-    view.classList.remove('active-view');
-  });
+function switchView(viewId){
 
-  const navLinks = document.querySelectorAll('#main-nav a');
-  navLinks.forEach(link => {
-    link.classList.remove('active-nav');
-  });
+document.querySelectorAll(".view-section").forEach(view=>{
+view.classList.remove("active-view");
+});
 
-  const targetView = document.getElementById(viewId);
-  if (targetView) {
-    targetView.classList.add('active-view');
-  }
+const target=document.getElementById(viewId);
 
-  const activeNavLink = document.getElementById('nav-' + viewId);
-  if (activeNavLink) {
-    activeNavLink.classList.add('active-nav');
-  }
+if(target){
+target.classList.add("active-view");
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+document.querySelectorAll("#main-nav a").forEach(nav=>{
+nav.classList.remove("active-nav");
+});
+
+if(viewId==="tour-view" ||
+viewId==="tour-ai" ||
+viewId==="tour-assistant" ||
+viewId==="tour-batch" ||
+viewId==="tour-building" ||
+viewId==="tour-report"){
+
+document.getElementById("nav-tour-view").classList.add("active-nav");
+
+}else{
+
+const nav=document.getElementById("nav-"+viewId);
+
+if(nav){
+nav.classList.add("active-nav");
+}
+
+}
+
 }
 </script>
 </body>
