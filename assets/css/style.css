@@ -65,11 +65,10 @@ body .radar::before {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 2850deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
-   
-    rgba(0, 240, 255, 0.6) 330deg,
-    rgba(0, 240, 255, 0.09) 355deg,
-    rgba(200, 245, 255, 0.10) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
+    transparent 260deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
+    rgba(0, 240, 255, 0.08) 330deg,
+    rgba(0, 240, 255, 0.10) 355deg,
+    rgba(200, 245, 255, 0.15) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
   );
   animation: spin 4s linear infinite;
 }
