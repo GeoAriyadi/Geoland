@@ -65,7 +65,7 @@ body .radar::before {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 260deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
+    transparent 290deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
     rgba(0, 240, 255, 0.02) 290deg,
     rgba(0, 240, 255, 0.6) 330deg,
     rgba(0, 240, 255, 0.10) 355deg,
