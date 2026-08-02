@@ -68,8 +68,8 @@ body .radar::before {
     transparent 260deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
     rgba(0, 240, 255, 0.03) 290deg,
     rgba(0, 240, 255, 0.08) 330deg,
-    rgba(0, 240, 255, 0.35) 355deg,
-    rgba(200, 245, 255, 0.75) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
+    rgba(0, 240, 255, 0.15) 355deg,
+    rgba(200, 245, 255, 0.55) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
   );
   animation: spin 4s linear infinite;
 }
