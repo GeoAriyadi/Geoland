@@ -489,6 +489,66 @@ margin-bottom:0;
 
 }
 
+/* ===================================
+   FEATURES
+=================================== */
+
+.features-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+margin-top:50px;
+
+}
+
+.feature-card{
+padding:34px;
+border-radius:24px;
+background:rgba(0,30,85,.42);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+transition:.3s;
+
+}
+
+.feature-card:hover{
+transform:translateY(-6px);
+border-color:#FFC107;
+box-shadow:
+0 15px 40px rgba(255,193,7,.12);
+
+}
+
+.feature-icon{
+width:64px;
+height:64px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+background:
+rgba(255,193,7,.12);
+margin-bottom:22px;
+
+}
+
+.feature-card h3{
+font-size:1.3rem;
+margin-bottom:15px;
+font-weight:700;
+color:#fff;
+
+}
+
+.feature-card p{
+color:#cce0ff;
+line-height:1.8;
+font-size:.95rem;
+
+}
+
 /* ===== VIEW 2: MAP GALLERY ===== */
 .project-grid {
   display: grid;
@@ -642,17 +702,18 @@ footer { text-align: center; padding: 40px 0; color: #b3d4ff; font-size: 0.9rem;
 <header>
   <div class="container nav-wrap">
     <a onclick="switchView('home-view')" style="cursor: pointer;" class="logo">
-      GeoAriyadi
+      GeoLand AI
       <div class="location-text">
-        📍 Bogor, Indonesia
+        📍 Indonesia
       </div>
     </a>
-    <nav id="main-nav">
-      <a onclick="switchView('home-view')" id="nav-home-view" class="active-nav">Home</a>
-      <a onclick="switchView('gallery-view')" id="nav-gallery-view">Map Gallery</a>
-      <a onclick="switchView('about-view')" id="nav-about-view">About Me</a>
-      <a onclick="switchView('contact-view')" id="nav-contact-view">Contact</a>
-    </nav>
+<nav id="main-nav">
+  <a onclick="switchView('home-view')" id="nav-home-view" class="active-nav">Home</a>
+  <a onclick="switchView('features-view')" id="nav-features-view">Features</a>
+  <a onclick="switchView('gallery-view')" id="nav-gallery-view">Demo</a>
+  <a onclick="switchView('about-view')" id="nav-about-view">About</a>
+  <a onclick="switchView('contact-view')" id="nav-contact-view">Contact</a>
+</nav>
   </div>
 </header>
 
@@ -725,6 +786,44 @@ footer { text-align: center; padding: 40px 0; color: #b3d4ff; font-size: 0.9rem;
 
 </div>
   </section>
+</main>
+
+<main id="features-view" class="view-section">
+<section class="container">
+<h2 class="section-title">
+Platform Features
+</h2>
+<p class="section-sub">
+Discover the capabilities that make GeoLand an AI-powered Location Intelligence Platform.
+</p>
+
+<div class="features-grid">
+
+  <div class="feature-card">
+
+<div class="feature-icon">
+🧠
+</div>
+
+<h3>
+AI Recommendation Engine
+</h3>
+
+<p>
+Identify high-potential business and investment locations using AI-assisted spatial analysis based on accessibility, demographics, commercial activity, surrounding points of interest, and regional growth indicators.
+</p>
+
+</div>
+
+</div>
+
+<div class="back-home-container">
+<a onclick="switchView('home-view')" class="btn btn-secondary">
+← Back to Home
+</a>
+</div>
+
+</section>
 </main>
 
 <main id="gallery-view" class="view-section">
