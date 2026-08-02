@@ -41,21 +41,21 @@ body .radar {
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.9;
+  opacity: 0.75; /* DITURUNKAN: Agar keseluruhan radar tidak terlalu terang */
   background:
-    /* Glow halus di tengah radar */
-    radial-gradient(circle, rgba(0, 240, 255, 0.05), transparent 60%),
-    /* Garis lingkaran radar yang LEBIH JELAS */
+    /* Glow halus di tengah radar sedikit diredupkan */
+    radial-gradient(circle, rgba(0, 240, 255, 0.03), transparent 60%),
+    /* Garis lingkaran radar dibuat lebih proporsional (tidak terlalu mencolok) */
     repeating-radial-gradient(
       circle,
-      rgba(0, 240, 255, 0.15) 0px,
-      rgba(0, 240, 255, 0.25) 1.5px,
+      rgba(0, 240, 255, 0.08) 0px,
+      rgba(0, 240, 255, 0.15) 1.5px,
       transparent 1.5px,
       transparent 80px
     );
 }
 
-/* Sapuan Scanner (Sweep) yang lebih terang */
+/* Sapuan Scanner (Sweep) diperpendek dan diredupkan */
 body .radar::before {
   content: "";
   position: absolute;
@@ -65,11 +65,11 @@ body .radar::before {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 180deg,
-    rgba(0, 240, 255, 0.05) 250deg,
-    rgba(0, 240, 255, 0.15) 320deg,
-    rgba(0, 240, 255, 0.6) 355deg,
-    rgba(255, 255, 255, 0.9) 360deg /* Ujung jarum sangat terang */
+    transparent 260deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
+    rgba(0, 240, 255, 0.03) 290deg,
+    rgba(0, 240, 255, 0.08) 330deg,
+    rgba(0, 240, 255, 0.35) 355deg,
+    rgba(200, 245, 255, 0.75) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
   );
   animation: spin 4s linear infinite;
 }
