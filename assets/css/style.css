@@ -25,22 +25,12 @@ h1, h2, h3, h4, .logo, .section-title, .geo-badge {
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
-/* GRID DESIGN: Grid Spasial Halus ala Blueprint Hologram */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: -2;
-}
+/* 
+  ===================================
+   RADAR GEOINTELLIGENCE (BACKGROUND)
+  ===================================
+*/
 
-/* ===================================
-   RADAR GEOINTELLIGENCE (NEON CYAN & VIOLET)
-===================================*/
 body .radar {
   position: fixed;
   top: -200px;
@@ -51,33 +41,40 @@ body .radar {
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.7;
+  opacity: 0.9;
   background:
-    radial-gradient(circle, rgba(0, 240, 255, 0.02), transparent 70%),
+    /* Glow halus di tengah radar */
+    radial-gradient(circle, rgba(0, 240, 255, 0.05), transparent 60%),
+    /* Garis lingkaran radar yang LEBIH JELAS */
     repeating-radial-gradient(
       circle,
-      rgba(0, 240, 255, 0.03) 0px,
-      rgba(0, 240, 255, 0.03) 1px,
-      transparent 1px,
-      transparent 100px
+      rgba(0, 240, 255, 0.15) 0px,
+      rgba(0, 240, 255, 0.25) 1.5px,
+      transparent 1.5px,
+      transparent 80px
     );
 }
 
+/* Sapuan Scanner (Sweep) yang lebih terang */
 body .radar::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
+  border-radius: 50%;
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(0, 240, 255, 0.01) 330deg,
-    rgba(0, 240, 255, 0.1) 352deg,
-    rgba(0, 240, 255, 0.4) 360deg
+    transparent 180deg,
+    rgba(0, 240, 255, 0.05) 250deg,
+    rgba(0, 240, 255, 0.15) 320deg,
+    rgba(0, 240, 255, 0.6) 355deg,
+    rgba(255, 255, 255, 0.9) 360deg /* Ujung jarum sangat terang */
   );
   animation: spin 4s linear infinite;
 }
 
+/* Titik-titik Radar (Dots) yang diperbanyak & bercahaya */
 body .radar::after {
   content: "";
   position: absolute;
@@ -85,23 +82,34 @@ body .radar::after {
   z-index: 2;
   pointer-events: none;
   background:
-    /* Titik-titik data satelit dengan warna Cyan dan Violet */
-    radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.9) 1px, transparent 2px),
-    radial-gradient(circle at 25% 80%, rgba(138, 43, 226, 0.8) 1px, transparent 2px),
-    radial-gradient(circle at 40% 35%, rgba(0, 240, 255, 0.7) 1px, transparent 2px),
-    radial-gradient(circle at 55% 60%, rgba(255, 255, 255, 0.6) 1px, transparent 2px),
-    radial-gradient(circle at 70% 25%, rgba(138, 43, 226, 0.7) 1px, transparent 2px),
-    radial-gradient(circle at 80% 75%, rgba(0, 240, 255, 0.6) 1px, transparent 2px),
-    radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.5) 1px, transparent 2px),
-    radial-gradient(circle at 15% 55%, rgba(0, 240, 255, 0.8) 1px, transparent 2px);
-  animation: dotPulse 3s ease-in-out infinite;
+    /* Titik Cyan */
+    radial-gradient(circle at 10% 20%, #00f0ff 1.5px, rgba(0,240,255,0.4) 4px, transparent 6px),
+    radial-gradient(circle at 40% 35%, #00f0ff 2px, rgba(0,240,255,0.5) 5px, transparent 8px),
+    radial-gradient(circle at 80% 75%, #00f0ff 1px, rgba(0,240,255,0.4) 3px, transparent 5px),
+    radial-gradient(circle at 15% 55%, #00f0ff 1.5px, rgba(0,240,255,0.4) 4px, transparent 6px),
+    radial-gradient(circle at 65% 15%, #00f0ff 1.5px, rgba(0,240,255,0.4) 4px, transparent 6px),
+    radial-gradient(circle at 85% 20%, #00f0ff 1px, rgba(0,240,255,0.4) 3px, transparent 5px),
+    /* Titik Violet */
+    radial-gradient(circle at 25% 80%, #8a2be2 1.5px, rgba(138,43,226,0.5) 4px, transparent 6px),
+    radial-gradient(circle at 70% 25%, #8a2be2 2px, rgba(138,43,226,0.5) 5px, transparent 8px),
+    radial-gradient(circle at 50% 60%, #8a2be2 1px, rgba(138,43,226,0.4) 3px, transparent 5px),
+    radial-gradient(circle at 85% 40%, #8a2be2 1.5px, rgba(138,43,226,0.4) 4px, transparent 6px),
+    radial-gradient(circle at 35% 15%, #8a2be2 1.5px, rgba(138,43,226,0.4) 4px, transparent 6px),
+    /* Titik Putih Terang */
+    radial-gradient(circle at 55% 85%, #ffffff 1px, rgba(255,255,255,0.4) 3px, transparent 5px),
+    radial-gradient(circle at 90% 60%, #ffffff 1.5px, rgba(255,255,255,0.5) 4px, transparent 6px),
+    radial-gradient(circle at 30% 40%, #ffffff 1px, rgba(255,255,255,0.4) 3px, transparent 5px),
+    radial-gradient(circle at 15% 85%, #ffffff 1.5px, rgba(255,255,255,0.4) 4px, transparent 6px);
+  
+  /* Animasi kedip yang lebih responsif */
+  animation: dotPulse 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
 @keyframes dotPulse {
-  0% { opacity: 0.3; transform: scale(0.99); }
-  50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 4px #00f0ff); }
-  100% { opacity: 0.3; transform: scale(0.99); }
+  0% { opacity: 0.15; filter: brightness(0.8) drop-shadow(0 0 0px transparent); }
+  100% { opacity: 1; filter: brightness(1.5) drop-shadow(0 0 8px #00f0ff); }
 }
 
 .container { width: min(1150px, 92%); margin: auto; }
@@ -142,7 +150,7 @@ header {
   margin-top: 4px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  -webkit-text-fill-color: #64748b; /* Override gradient for subtext */
+  -webkit-text-fill-color: #64748b;
 }
 nav a {
   margin-left: 32px;
@@ -193,7 +201,7 @@ section { padding: 100px 0; }
   align-items: center;
   justify-content: center;
   padding: 14px 32px;
-  border-radius: 8px; /* Sudut lebih tajam/clean */
+  border-radius: 8px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -253,7 +261,7 @@ section { padding: 100px 0; }
   font-weight: 300;
 }
 
-/* Dashboard Media Panel - Hologram look */
+/* Dashboard Media Panel */
 .dashboard-panel {
   width: 100%;
   max-width: 950px;
@@ -306,7 +314,7 @@ section { padding: 100px 0; }
 .geo-badge {
   display: inline-block;
   padding: 6px 14px;
-  border-radius: 4px; /* Sudut techy */
+  border-radius: 4px; 
   background: rgba(0, 240, 255, 0.1);
   border: 1px solid rgba(0, 240, 255, 0.3);
   color: #00f0ff;
@@ -338,7 +346,6 @@ section { padding: 100px 0; }
   position: relative;
   overflow: hidden;
 }
-/* Efek garis pendar di atas card */
 .feature-card::before {
   content: "";
   position: absolute;
@@ -400,7 +407,7 @@ section { padding: 100px 0; }
   backdrop-filter: blur(12px);
   transition: 0.3s;
 }
-.tour-card:hover { border-color: rgba(138, 43, 226, 0.3); } /* Variasi hover ke Violet */
+.tour-card:hover { border-color: rgba(138, 43, 226, 0.3); } 
 .tour-header { margin-bottom: 30px; }
 .tour-header h3 { font-size: 1.8rem; color: #fff; margin-bottom: 12px; }
 .tour-header p { color: #94a3b8; line-height: 1.7; font-weight: 300; }
@@ -427,7 +434,7 @@ section { padding: 100px 0; }
   display: block;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  color: #8a2be2; /* Neon Violet Accent */
+  color: #8a2be2; 
   margin-bottom: 8px;
   font-size: 0.9rem;
   text-transform: uppercase;
