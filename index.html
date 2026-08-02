@@ -549,6 +549,26 @@ font-size:.95rem;
 
 }
 
+.feature-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin-top:22px;
+padding:10px 18px;
+border-radius:10px;
+background:#FFC107;
+color:#002266;
+font-weight:700;
+font-size:.9rem;
+cursor:pointer;
+transition:.25s;
+}
+
+.feature-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(255,193,7,.25);
+}
+
 /* ===================================
    PRODUCT TOUR
 =================================== */
@@ -967,34 +987,49 @@ Select a feature below to watch the demonstration.
 
 <div class="features-grid">
 
-<div class="feature-card" onclick="switchView('tour-ai')">
+<div class="feature-card">
 <div class="feature-icon">🧠</div>
 <h3>AI Recommendation Engine</h3>
 <p>AI-powered business location recommendation.</p>
+<div class="feature-btn" onclick="switchView('tour-ai')">
+▶ Watch Product Tour
+</div>
 </div>
 
-<div class="feature-card" onclick="switchView('tour-assistant')">
+<div class="feature-card">
 <div class="feature-icon">🤖</div>
 <h3>GeoLand AI Assistant</h3>
 <p>Natural language spatial assistant.</p>
+<div class="feature-btn" onclick="switchView('tour-assistant')">
+▶ Watch Product Tour
+</div>
 </div>
 
-<div class="feature-card" onclick="switchView('tour-batch')">
+<div class="feature-card">
 <div class="feature-icon">📊</div>
 <h3>Batch Location Analysis</h3>
 <p>Analyze hundreds of locations simultaneously.</p>
+<div class="feature-btn" onclick="switchView('tour-batch')">
+▶ Watch Product Tour
+</div>
 </div>
 
-<div class="feature-card" onclick="switchView('tour-building')">
+<div class="feature-card">
 <div class="feature-icon">🏢</div>
 <h3>3D Building Intelligence</h3>
 <p>Interactive nationwide building visualization.</p>
+<div class="feature-btn" onclick="switchView('tour-building')">
+▶ Watch Product Tour
+</div>
 </div>
 
-<div class="feature-card" onclick="switchView('tour-report')">
+<div class="feature-card">
 <div class="feature-icon">📄</div>
 <h3>AI Spatial Reports</h3>
 <p>Generate professional PDF reports.</p>
+<div class="feature-btn" onclick="switchView('tour-report')">
+▶ Watch Product Tour
+</div>
 </div>
 
 </div>
