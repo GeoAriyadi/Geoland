@@ -66,10 +66,10 @@ body .radar::before {
     from 0deg,
     transparent 0deg,
     transparent 260deg, /* DITAMBAH: Ekor dipotong, membuat sapuan lebih pendek */
-    rgba(0, 240, 255, 0.03) 290deg,
-    rgba(0, 240, 255, 0.08) 330deg,
-    rgba(0, 240, 255, 0.15) 355deg,
-    rgba(200, 245, 255, 0.55) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
+    rgba(0, 240, 255, 0.02) 290deg,
+    rgba(0, 240, 255, 0.6) 330deg,
+    rgba(0, 240, 255, 0.10) 355deg,
+    rgba(200, 245, 255, 0.15) 360deg /* DITURUNKAN: Ujung jarum tidak terlalu silau */
   );
   animation: spin 4s linear infinite;
 }
@@ -138,6 +138,7 @@ header {
   font-size: 24px;
   background: linear-gradient(90deg, #ffffff, #00f0ff);
   -webkit-background-clip: text;
+  background-clip: text; /* TAMBAHKAN BARIS INI UNTUK MENGHILANGKAN WARNING */
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
 }
