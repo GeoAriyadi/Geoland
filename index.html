@@ -31,22 +31,40 @@
 </button>
 
 <nav id="main-menu">
-  <a onclick="switchView('home-view')" id="nav-home-view" class="active-nav">Home</a>
-  <a onclick="switchView('features-view')" id="nav-features-view">Features</a>
-  <a onclick="switchView('tour-view')" id="nav-tour-view">Product Tour</a>
-  <a onclick="switchView('gallery-view')" id="nav-gallery-view">Map Gallery</a>
-  <a onclick="switchView('about-view')" id="nav-about-view">About</a>
-  <a onclick="switchView('contact-view')" id="nav-contact-view">Contact</a>
-  
+
+<a onclick="switchView('home-view')" id="nav-home-view" class="active-nav" data-i18n="nav_home">Home</a>
+<a onclick="switchView('features-view')" id="nav-features-view" data-i18n="nav_features">Features</a>
+<a onclick="switchView('tour-view')" id="nav-tour-view" data-i18n="nav_tour">Product Tour</a>
+<a onclick="switchView('gallery-view')" id="nav-gallery-view" data-i18n="nav_gallery">Map Gallery</a>
+<a onclick="switchView('about-view')" id="nav-about-view" data-i18n="nav_about">About</a>
+<a onclick="switchView('contact-view')" id="nav-contact-view" data-i18n="nav_contact">Contact</a>
+
 </nav>
-  </div>
+
+
+<!-- LANGUAGE SWITCH OUTSIDE NAV -->
+<div class="language-switch">
+
+<button onclick="changeLanguage('id')" id="lang-id">
+INA
+</button>
+
+<span></span>
+
+<button onclick="changeLanguage('en')" id="lang-en">
+ENG
+</button>
+
+</div>
+
+</div>
 </header>
 
 <main id="home-view" class="view-section active-view">
   <section class="container hero-corporate">
-    <h1>Where Artificial Intelligence Meets Geography</h1>
-    <p>Transform location data into intelligent insights with an AI-powered Location Intelligence Platform designed for businesses, governments, researchers, and investors.</p>
-    
+    <h1 data-i18n="hero_title">Where Artificial Intelligence Meets Geography</h1>
+    <p data-i18n="hero_subtitle">Transform location data into intelligent insights with an AI-powered Location Intelligence Platform designed for businesses, governments, researchers, and investors.</p>
+
     <div class="dashboard-panel">
       <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
         <source src="assets/img/geoland.mp4" type="video/mp4">
@@ -55,23 +73,25 @@
     </div>
 
     <div>
-      <a href="https://geoland-indonesia.vercel.app/" target="_blank" class="btn btn-primary">Try Now</a>
+      <a href="https://geoland-indonesia.vercel.app/" target="_blank" class="btn btn-primary" data-i18n="hero_button">Try Now</a>
     </div>
 <div class="geoland-description glass">
 
   <!-- BUNGKUS DENGAN DIV INI -->
-  <div class="title-wrapper">
-    <div class="geo-badge">
-        GeoLand Indonesia Platform
+<div class="title-wrapper">
+
+    <div class="geo-badge" data-i18n="home_badge">
+        GeoLand Indonesia
     </div>
 
-    <h2>
+
+    <h2 data-i18n="home_title">
         AI-Powered National Location Intelligence Platform
     </h2>
   </div>
   <!-- BATAS BUNGKUS -->
 
-<p>
+<p data-i18n="home_p1">
 GeoLand Indonesia is a nationwide Location Intelligence platform that transforms
 complex geospatial data into actionable insights for smarter decision-making.
 By integrating building footprints, road networks, administrative boundaries,
@@ -80,7 +100,7 @@ GeoLand provides a comprehensive understanding of locations across Indonesia.
 </p>
 
 
-<p>
+<p data-i18n="home_p2">
 Designed for business expansion, investment analysis, urban planning, and
 regional development, GeoLand enables users to discover strategic locations,
 evaluate area potential, analyze accessibility, understand surrounding
@@ -88,7 +108,7 @@ activities, and identify opportunities through interactive spatial intelligence.
 </p>
 
 
-<p>
+<p data-i18n="home_p3">
 Unlike conventional mapping platforms that only visualize geographic data,
 GeoLand combines AI-assisted analytics, 3D building intelligence, property
 insights, business suitability analysis, and automated recommendations into a
@@ -96,7 +116,7 @@ single integrated ecosystem.
 </p>
 
 
-<p>
+<p data-i18n="home_p4">
 Powered by modern geospatial technologies including PostgreSQL/PostGIS,
 MapLibre, vector tile infrastructure, spatial analytics, and AI-driven
 workflows, GeoLand is built to process large-scale geographic datasets while
@@ -104,7 +124,7 @@ delivering a fast, intuitive, and scalable user experience.
 </p>
 
 
-<p>
+<p data-i18n="home_p5">
 GeoLand Indonesia represents the future of geospatial decision support —
 connecting location data, intelligent analysis, and interactive visualization
 to help organizations make better decisions based on where things happen.
@@ -117,9 +137,11 @@ to help organizations make better decisions based on where things happen.
 <main id="features-view" class="view-section">
 <section class="container">
 
-<h2 class="section-title">Platform Features</h2>
+<h2 class="section-title" data-i18n="features_title">
+Platform Features
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="features_subtitle">
 Explore the powerful capabilities that transform nationwide geospatial data into AI-powered location intelligence for planning, investment, business expansion, and smarter spatial decision-making.
 </p>
 
@@ -127,69 +149,70 @@ Explore the powerful capabilities that transform nationwide geospatial data into
 
 <div class="feature-card">
 <div class="feature-icon">🧠</div>
-<h3>AI Recommendation Engine</h3>
-<p>Identify the most strategic locations for business expansion using AI-powered spatial analysis. GeoLand evaluates accessibility, commercial activity, surrounding POIs, demographics, road connectivity, and regional growth to recommend the highest-potential locations.</p>
+<h3 data-i18n="feature_ai_title">AI Recommendation Engine</h3>
+<p data-i18n="feature_ai_description">Identify the most strategic locations for business expansion using AI-powered spatial analysis. GeoLand evaluates accessibility, commercial activity, surrounding POIs, demographics, road connectivity, and regional growth to recommend the highest-potential locations.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🏢</div>
-<h3>Nationwide Building Intelligence</h3>
-<p>Explore more than 120 million building footprints across Indonesia in interactive 3D. Inspect individual buildings, visualize urban density, and understand the physical characteristics of any location.</p>
+<h3 data-i18n="feature_building_title">Nationwide Building Intelligence</h3>
+<p data-i18n="feature_building_description">Explore more than 120 million building footprints across Indonesia in interactive 3D. Inspect individual buildings, visualize urban density, and understand the physical characteristics of any location.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📍</div>
-<h3>Smart Location Search</h3>
-<p>Instantly navigate using place names, administrative boundaries, coordinates, or current location. Designed for smooth exploration across nationwide spatial datasets.</p>
+<h3 data-i18n="feature_search_title">Smart Location Search</h3>
+<p data-i18n="feature_search_description">Instantly navigate using place names, administrative boundaries, coordinates, or current location. Designed for smooth exploration across nationwide spatial datasets.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📊</div>
-<h3>Business Suitability Analysis</h3>
-<p>Measure how suitable a location is for different business categories through AI-generated scoring based on accessibility, surrounding activities, competition, commercial density, and regional characteristics.</p>
+<h3 data-i18n="feature_business_title">Business Suitability Analysis</h3>
+<p data-i18n="feature_business_description">Measure how suitable a location is for different business categories through AI-generated scoring based on accessibility, surrounding activities, competition, commercial density, and regional characteristics.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🏠</div>
-<h3>Property Intelligence</h3>
-<p>Access AI-generated property insights including estimated land value, building valuation, accessibility metrics, nearby facilities, neighborhood characteristics, and investment potential.</p>
+<h3 data-i18n="feature_property_title">Property Intelligence</h3>
+<p data-i18n="feature_property_description">Access AI-generated property insights including estimated land value, building valuation, accessibility metrics, nearby facilities, neighborhood characteristics, and investment potential.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📌</div>
-<h3>Points of Interest Intelligence</h3>
-<p>Discover restaurants, schools, hospitals, retail centers, tourist attractions, government facilities, and thousands of other important locations to better understand local activity.</p>
+<h3 data-i18n="feature_poi_title">Points of Interest Intelligence</h3>
+<p data-i18n="feature_poi_description">Discover restaurants, schools, hospitals, retail centers, tourist attractions, government facilities, and thousands of other important locations to better understand local activity.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🌎</div>
-<h3>Interactive 3D Visualization</h3>
-<p>Explore nationwide geospatial information through modern vector tiles, interactive 3D buildings, high-performance rendering, and smooth navigation optimized for massive datasets.</p>
+<h3 data-i18n="feature_3d_title">Interactive 3D Visualization</h3>
+<p data-i18n="feature_3d_description">Explore nationwide geospatial information through modern vector tiles, interactive 3D buildings, high-performance rendering, and smooth navigation optimized for massive datasets.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🤖</div>
-<h3>GeoLand AI Assistant</h3>
-<p>Interact with GeoLand using natural language. Ask location-based questions, discover suitable areas, and receive AI-generated spatial insights without requiring GIS expertise.</p>
+<h3 data-i18n="feature_assistant_title">GeoLand AI Assistant</h3>
+<p data-i18n="feature_assistant_description">Interact with GeoLand using natural language. Ask location-based questions, discover suitable areas, and receive AI-generated spatial insights without requiring GIS expertise.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📄</div>
-<h3>AI Spatial Reports</h3>
-<p>Generate professional PDF reports containing AI summaries, location intelligence, property analysis, investment recommendations, and spatial insights ready to share with stakeholders.</p>
+<h3 data-i18n="feature_reports_title">AI Spatial Reports</h3>
+<p data-i18n="feature_reports_description">Generate professional PDF reports containing AI summaries, location intelligence, property analysis, investment recommendations, and spatial insights ready to share with stakeholders.</p>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">⚡</div>
-<h3>Enterprise Spatial Engine</h3>
-<p>Powered by PostgreSQL/PostGIS, vector tiles, spatial indexing, optimized rendering, and scalable backend architecture to deliver responsive nationwide Location Intelligence.</p>
+<h3 data-i18n="feature_engine_title">Enterprise Spatial Engine</h3>
+<p data-i18n="feature_engine_description">Built to process and analyze millions of spatial records, delivering fast, reliable, and scalable Location Intelligence for nationwide decision-making.</p>
 </div>
 
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
-</div>
+<a onclick="switchView('home-view')" class="btn btn-secondary" data-i18n="back_home">
+← Back to Home
+</a>
 
 </section>
 </main>
@@ -197,9 +220,11 @@ Explore the powerful capabilities that transform nationwide geospatial data into
 <main id="tour-view" class="view-section">
 <section class="container">
 
-<h2 class="section-title">Product Tour</h2>
+<h2 class="section-title" data-i18n="tour_title">
+Product Tour
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_subtitle">
 Explore every GeoLand capability through short interactive walkthroughs.
 Select a feature below to watch the demonstration.
 </p>
@@ -208,45 +233,75 @@ Select a feature below to watch the demonstration.
 
 <div class="feature-card">
 <div class="feature-icon">🧠</div>
-<h3>AI Recommendation Engine</h3>
-<p>AI-powered business location recommendation.</p>
-<div class="feature-btn" onclick="switchView('tour-ai')">
+<h3 data-i18n="tour_ai_title">
+AI Recommendation Engine
+</h3>
+
+<p data-i18n="tour_ai_desc">
+AI-powered business location recommendation.
+</p>
+
+<div class="feature-btn" onclick="switchView('tour-ai')" data-i18n="watch_tour">
 ▶ Watch Product Tour
 </div>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🤖</div>
-<h3>GeoLand AI Assistant</h3>
-<p>Natural language spatial assistant.</p>
-<div class="feature-btn" onclick="switchView('tour-assistant')">
+<h3 data-i18n="tour_assistant_title">
+GeoLand AI Assistant
+</h3>
+
+<p data-i18n="tour_assistant_desc">
+Natural language spatial assistant.
+</p>
+
+<div class="feature-btn" onclick="switchView('tour-assistant')" data-i18n="watch_tour">
 ▶ Watch Product Tour
 </div>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📊</div>
-<h3>Batch Location Analysis</h3>
-<p>Analyze hundreds of locations simultaneously.</p>
-<div class="feature-btn" onclick="switchView('tour-batch')">
+<h3 data-i18n="tour_batch_title">
+Batch Location Analysis
+</h3>
+
+<p data-i18n="tour_batch_desc">
+Analyze hundreds of locations simultaneously.
+</p>
+
+<div class="feature-btn" onclick="switchView('tour-batch')" data-i18n="watch_tour">
 ▶ Watch Product Tour
 </div>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">🏢</div>
-<h3>3D Building Intelligence</h3>
-<p>Interactive nationwide building visualization.</p>
-<div class="feature-btn" onclick="switchView('tour-building')">
+<h3 data-i18n="tour_building_title">
+3D Building Intelligence
+</h3>
+
+<p data-i18n="tour_building_desc">
+Interactive nationwide building visualization.
+</p>
+
+<div class="feature-btn" onclick="switchView('tour-building')" data-i18n="watch_tour">
 ▶ Watch Product Tour
 </div>
 </div>
 
 <div class="feature-card">
 <div class="feature-icon">📄</div>
-<h3>AI Spatial Reports</h3>
-<p>Generate professional PDF reports.</p>
-<div class="feature-btn" onclick="switchView('tour-report')">
+<h3 data-i18n="tour_report_title">
+AI Spatial Reports
+</h3>
+
+<p data-i18n="tour_report_desc">
+Generate professional reports and export selected spatial data with a single click.
+</p>
+
+<div class="feature-btn" onclick="switchView('tour-report')" data-i18n="watch_tour">
 ▶ Watch Product Tour
 </div>
 </div>
@@ -254,8 +309,9 @@ Select a feature below to watch the demonstration.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
-</div>
+<a onclick="switchView('home-view')" class="btn btn-secondary" data-i18n="back_home">
+← Back to Home
+</a>
 
 </section>
 </main>
@@ -264,9 +320,11 @@ Select a feature below to watch the demonstration.
 <main id="tour-ai" class="view-section">
 <section class="container">
 
-<h2 class="section-title">AI Recommendation Engine</h2>
+<h2 class="section-title" data-i18n="tour_ai_page_title">
+AI Recommendation Engine
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_ai_page_subtitle">
 Learn how GeoLand identifies the most strategic business and investment locations using AI-powered nationwide spatial analysis.
 </p>
 
@@ -275,8 +333,11 @@ Learn how GeoLand identifies the most strategic business and investment location
 <div class="tour-card">
 
 <div class="tour-header">
-<h3>AI Recommendation Engine</h3>
-<p>
+<h3 data-i18n="tour_ai_header">
+AI Recommendation Engine
+</h3>
+
+<p data-i18n="tour_ai_header_desc">
 GeoLand analyzes accessibility, commercial activity, surrounding POIs, demographics, road connectivity, and regional growth to recommend the highest-potential locations for your business.
 </p>
 </div>
@@ -291,18 +352,27 @@ Your browser does not support video.
 <div class="tour-steps">
 
 <div class="tour-step">
-<span>Step 1</span>
-<p>Select your preferred business category such as restaurant, café, minimarket, pharmacy, warehouse, or other business types.</p>
+<span data-i18n="step_1">Step 1</span>
+
+<p data-i18n="tour_ai_step1">
+Select your preferred business category such as restaurant, café, minimarket, pharmacy, warehouse, or other business types.
+</p>
 </div>
 
 <div class="tour-step">
-<span>Step 2</span>
-<p>Enter your available investment budget to filter locations based on your financial capacity.</p>
+<span data-i18n="step_2">Step 2</span>
+
+<p data-i18n="tour_ai_step2">
+Enter your available investment budget to filter locations based on your financial capacity.
+</p>
 </div>
 
 <div class="tour-step">
-<span>Step 3</span>
-<p>GeoLand evaluates millions of nationwide spatial records and instantly recommends the best locations with AI-generated suitability scores.</p>
+<span data-i18n="step_3">Step 3</span>
+
+<p data-i18n="tour_ai_step3">
+GeoLand evaluates millions of nationwide spatial records and instantly recommends the best locations with AI-generated suitability scores.
+</p>
 </div>
 
 </div>
@@ -310,7 +380,9 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('tour-view')" class="btn btn-secondary">
+<a onclick="switchView('tour-view')"
+class="btn btn-secondary"
+data-i18n="back_product_tour">
 ← Back to Product Tour
 </a>
 </div>
@@ -321,9 +393,11 @@ Your browser does not support video.
 <main id="tour-assistant" class="view-section">
 <section class="container">
 
-<h2 class="section-title">GeoLand AI Assistant</h2>
+<h2 class="section-title" data-i18n="tour_assistant_page_title">
+GeoLand AI Assistant
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_assistant_page_subtitle">
 Interact with GeoLand using natural language to discover locations and receive AI-powered spatial insights.
 </p>
 
@@ -332,8 +406,15 @@ Interact with GeoLand using natural language to discover locations and receive A
 <div class="tour-card">
 
 <div class="tour-header">
-<h3>GeoLand AI Assistant</h3>
-<p>Ask GeoLand questions in plain language and instantly receive intelligent spatial analysis.</p>
+
+<h3 data-i18n="tour_assistant_header">
+GeoLand AI Assistant
+</h3>
+
+<p data-i18n="tour_assistant_header_desc">
+Ask GeoLand questions in plain language and instantly receive intelligent spatial analysis.
+</p>
+
 </div>
 
 <div class="tour-media">
@@ -346,18 +427,32 @@ Your browser does not support video.
 <div class="tour-steps">
 
 <div class="tour-step">
-<span>Step 1</span>
-<p>Open the GeoLand AI Assistant panel.</p>
+<span data-i18n="step_1">Step 1</span>
+<p data-i18n="tour_assistant_step1">Open the GeoLand AI Assistant panel.</p>
 </div>
 
 <div class="tour-step">
-<span>Step 2</span>
-<p>Ask questions such as "Best area for a coffee shop" or "Show high-growth districts".</p>
+
+<span data-i18n="step_2">
+Step 2
+</span>
+
+<p data-i18n="tour_assistant_step2">
+Ask questions such as "Best area for a coffee shop" or "Show high-growth districts".
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 3</span>
-<p>GeoLand analyzes nationwide spatial data and returns AI-generated recommendations.</p>
+
+<span data-i18n="step_3">
+Step 3
+</span>
+
+<p data-i18n="tour_assistant_step3">
+GeoLand analyzes nationwide spatial data and returns AI-generated recommendations.
+</p>
+
 </div>
 
 </div>
@@ -365,7 +460,12 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+<a 
+onclick="switchView('tour-view')" 
+class="btn btn-secondary"
+data-i18n="back_product_tour">
+← Back to Product Tour
+</a>
 </div>
 
 </section>
@@ -375,9 +475,11 @@ Your browser does not support video.
 <main id="tour-batch" class="view-section">
 <section class="container">
 
-<h2 class="section-title">Batch Location Analysis</h2>
+<h2 class="section-title" data-i18n="tour_batch_page_title">
+Batch Location Analysis
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_batch_page_subtitle">
 Analyze hundreds or even thousands of locations in a single process.
 </p>
 
@@ -386,8 +488,15 @@ Analyze hundreds or even thousands of locations in a single process.
 <div class="tour-card">
 
 <div class="tour-header">
-<h3>Batch Location Analysis</h3>
-<p>Upload coordinate datasets and let GeoLand evaluate every location automatically.</p>
+
+<h3 data-i18n="tour_batch_header">
+Batch Location Analysis
+</h3>
+
+<p data-i18n="tour_batch_header_desc">
+Upload coordinate datasets and let GeoLand evaluate every location automatically.
+</p>
+
 </div>
 
 <div class="tour-media">
@@ -400,18 +509,39 @@ Your browser does not support video.
 <div class="tour-steps">
 
 <div class="tour-step">
-<span>Step 1</span>
-<p>Upload a CSV file containing latitude and longitude coordinates.</p>
+
+<span data-i18n="step_1">
+Step 1
+</span>
+
+<p data-i18n="tour_batch_step1">
+Upload a CSV file containing ID, Latitude, and Longitude columns to perform large-scale location intelligence analysis.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 2</span>
-<p>Select the business category and analysis settings.</p>
+
+<span data-i18n="step_2">
+Step 2
+</span>
+
+<p data-i18n="tour_batch_step2">
+Select the business category and analysis settings.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 3</span>
-<p>GeoLand evaluates every location and generates downloadable AI recommendations.</p>
+
+<span data-i18n="step_3">
+Step 3
+</span>
+
+<p data-i18n="tour_batch_step3">
+GeoLand analyzes every uploaded location, ranks them using AI-powered spatial intelligence, and generates the Top 5 recommended locations.
+</p>
+
 </div>
 
 </div>
@@ -419,7 +549,12 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+<a 
+onclick="switchView('tour-view')" 
+class="btn btn-secondary"
+data-i18n="back_product_tour">
+← Back to Product Tour
+</a>
 </div>
 
 </section>
@@ -428,9 +563,11 @@ Your browser does not support video.
 <main id="tour-building" class="view-section">
 <section class="container">
 
-<h2 class="section-title">3D Building Intelligence</h2>
+<h2 class="section-title" data-i18n="tour_building_page_title">
+3D Building Intelligence
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_building_page_subtitle">
 Explore more than 100 million building footprints across Indonesia with smooth 3D visualization and building-level intelligence.
 </p>
 
@@ -439,8 +576,15 @@ Explore more than 100 million building footprints across Indonesia with smooth 3
 <div class="tour-card">
 
 <div class="tour-header">
-<h3>3D Building Intelligence</h3>
-<p>Navigate seamlessly across Indonesia and inspect individual buildings together with their surrounding spatial context.</p>
+
+<h3 data-i18n="tour_building_header">
+3D Building Intelligence
+</h3>
+
+<p data-i18n="tour_building_header_desc">
+Navigate seamlessly across Indonesia and inspect individual buildings together with their surrounding spatial context.
+</p>
+
 </div>
 
 <div class="tour-media">
@@ -453,18 +597,39 @@ Your browser does not support video.
 <div class="tour-steps">
 
 <div class="tour-step">
-<span>Step 1</span>
-<p>Navigate to any city, district, or coordinate in Indonesia.</p>
+
+<span data-i18n="step_1">
+Step 1
+</span>
+
+<p data-i18n="tour_building_step1">
+Navigate to any city, district, or coordinate in Indonesia.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 2</span>
-<p>Zoom into the map to display interactive 3D buildings.</p>
+
+<span data-i18n="step_2">
+Step 2
+</span>
+
+<p data-i18n="tour_building_step2">
+Zoom into the map to display interactive 3D buildings.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 3</span>
-<p>Select a building to explore property information and surrounding spatial intelligence.</p>
+
+<span data-i18n="step_3">
+Step 3
+</span>
+
+<p data-i18n="tour_building_step3">
+Select a building to explore property information and surrounding spatial intelligence.
+</p>
+
 </div>
 
 </div>
@@ -472,7 +637,12 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+<a 
+onclick="switchView('tour-view')" 
+class="btn btn-secondary"
+data-i18n="back_product_tour">
+← Back to Product Tour
+</a>
 </div>
 
 </section>
@@ -482,9 +652,11 @@ Your browser does not support video.
 <main id="tour-report" class="view-section">
 <section class="container">
 
-<h2 class="section-title">AI Spatial Reports</h2>
+<h2 class="section-title" data-i18n="tour_report_page_title">
+AI Spatial Reports
+</h2>
 
-<p class="section-sub">
+<p class="section-sub" data-i18n="tour_report_page_subtitle">
 Generate professional PDF reports that summarize AI-generated location intelligence and spatial analysis.
 </p>
 
@@ -493,8 +665,15 @@ Generate professional PDF reports that summarize AI-generated location intellige
 <div class="tour-card">
 
 <div class="tour-header">
-<h3>AI Spatial Reports</h3>
-<p>Create presentation-ready reports containing maps, property information, AI summaries, and investment insights.</p>
+
+<h3 data-i18n="tour_report_header">
+AI Spatial Reports
+</h3>
+
+<p data-i18n="tour_report_header_desc">
+Create presentation-ready reports containing maps, property information, AI summaries, and investment insights.
+</p>
+
 </div>
 
 <div class="tour-media">
@@ -507,18 +686,39 @@ Your browser does not support video.
 <div class="tour-steps">
 
 <div class="tour-step">
-<span>Step 1</span>
-<p>Select a property or recommendation result.</p>
+
+<span data-i18n="step_1">
+Step 1
+</span>
+
+<p data-i18n="tour_report_step1">
+Select a property or recommendation result.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 2</span>
-<p>Generate the AI-powered spatial report.</p>
+
+<span data-i18n="step_2">
+Step 2
+</span>
+
+<p data-i18n="tour_report_step2">
+Generate the AI-powered spatial report.
+</p>
+
 </div>
 
 <div class="tour-step">
-<span>Step 3</span>
-<p>Download a professional PDF ready to share with clients and stakeholders.</p>
+
+<span data-i18n="step_3">
+Step 3
+</span>
+
+<p data-i18n="tour_report_step3">
+Download a professional PDF ready to share with clients and stakeholders.
+</p>
+
 </div>
 
 </div>
@@ -526,7 +726,12 @@ Your browser does not support video.
 </div>
 
 <div class="back-home-container">
-<a onclick="switchView('tour-view')" class="btn btn-secondary">← Back to Product Tour</a>
+<a 
+onclick="switchView('tour-view')" 
+class="btn btn-secondary"
+data-i18n="back_product_tour">
+← Back to Product Tour
+</a>
 </div>
 
 </section>
@@ -535,52 +740,91 @@ Your browser does not support video.
 
 <main id="gallery-view" class="view-section">
   <section class="container">
-<h2 class="section-title">
-Selected Geospatial Projects</h2>
+<h2 class="section-title" data-i18n="gallery_title">
+Selected Geospatial Projects
+</h2>
 
-<p class="section-sub">
-A curated collection of WebGIS applications, spatial analytics dashboards, and geospatial solutions developed across various industries, showcasing expertise in GIS, remote sensing, spatial intelligence, and interactive mapping.</p>
+<p class="section-sub" data-i18n="gallery_subtitle">
+A curated collection of WebGIS applications, spatial analytics dashboards, and geospatial solutions developed across various industries, showcasing expertise in GIS, remote sensing, spatial intelligence, and interactive mapping.
+</p>
     
     <div class="project-grid">
       <div class="project-card glass">
         <img src="assets/img/dash-bali.jpg" alt="South Bali Dashboard">
         <div class="project-content">
-          <h3>South Bali Spatial Intelligence Dashboard</h3>
-          <p>Multi-theme WebGIS dashboard integrating education, health, accessibility, and tourism pressure analysis.</p>
-          <a href="projects/dashboard-south-bali/" class="btn btn-primary" style="width: 100%; padding: 10px;">Open dashboard</a>
+          <h3 data-i18n="gallery_bali_title">
+South Bali Spatial Intelligence Dashboard
+</h3>
+
+<p data-i18n="gallery_bali_desc">
+Multi-theme WebGIS dashboard integrating education, health, accessibility, and tourism pressure analysis.
+</p>
+
+<a href="projects/dashboard-south-bali/" class="btn btn-primary" style="width: 100%; padding: 10px;" data-i18n="gallery_open_dashboard">
+Open dashboard
+</a>
         </div>
       </div>
       
       <div class="project-card glass">
         <img src="assets/img/eco-bogor.jpg" alt="Bogor Analysis">
         <div class="project-content">
-          <h3>Bogor Economic Accessibility Index</h3>
-          <p>Economic accessibility and regional development analysis using OSM data</p>
-          <a href="projects/bogor-eco/index.html" class="btn btn-primary" style="width: 100%; padding: 10px;">View Map</a>
+<h3 data-i18n="gallery_bogor_title">
+Bogor Economic Accessibility Index
+</h3>
+
+<p data-i18n="gallery_bogor_desc">
+Economic accessibility and regional development analysis using OSM data.
+</p>
+
+<a href="projects/bogor-eco/index.html" class="btn btn-primary" style="width: 100%; padding: 10px;" data-i18n="gallery_view_map">
+View Map
+</a>
         </div>
       </div>
       
       <div class="project-card glass">
         <img src="assets/img/land-mandalika.jpg" alt="Mandalika Analysis">
         <div class="project-content">
-          <h3>Mandalika SEZ Land Suitability</h3>
-          <p>Multi-Criteria Evaluation (MCE) and Weighted Overlay Analysis for identifying optimal zones for tourism economic development in the Mandalika region.</p>
-          <a href="projects/mandalika-sez-land-analysis/" class="btn btn-primary" style="width: 100%; padding: 10px;">View Map</a>
+ <h3 data-i18n="gallery_mandalika_title">
+Mandalika SEZ Land Suitability
+</h3>
+
+<p data-i18n="gallery_mandalika_desc">
+Multi-Criteria Evaluation (MCE) and Weighted Overlay Analysis for identifying optimal zones for tourism economic development in the Mandalika region.
+</p>
+
+<a href="projects/mandalika-sez-land-analysis/" class="btn btn-primary" style="width: 100%; padding: 10px;" data-i18n="gallery_view_map">
+View Map
+</a>
         </div>
       </div>
 
       <div class="project-card glass">
         <img src="assets/img/geoland.jpg" alt="Geoland Ireland">
         <div class="project-content">
-          <h3>Geoland The Island of Ireland</h3>
-          <p>GeoLand AI serves as a spatial intelligence hub, integrating regional data processing and spatial analysis into a high-performance interactive interface. Through this platform, users can explore deep geographic insights to drive scalable planning and asset monitoring.</p>
-          <a href="https://geoland-ireland.vercel.app/" class="btn btn-primary" style="width: 100%; padding: 10px;">Try Now</a>
+<h3 data-i18n="gallery_ireland_title">
+Geoland The Island of Ireland
+</h3>
+
+<p data-i18n="gallery_ireland_desc">
+GeoLand AI serves as a spatial intelligence hub, integrating regional data processing and spatial analysis into a high-performance interactive interface. Through this platform, users can explore deep geographic insights to drive scalable planning and asset monitoring.
+</p>
+
+<a href="https://geoland-ireland.vercel.app/" class="btn btn-primary" style="width: 100%; padding: 10px;" data-i18n="gallery_try_now">
+Try Now
+</a>
         </div>
       </div>
       </div>
 
     <div class="back-home-container">
-      <a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
+      <a 
+onclick="switchView('home-view')" 
+class="btn btn-secondary"
+data-i18n="back_home">
+← Back to Home
+</a>
     </div>
   </section>
 </main>
@@ -588,12 +832,12 @@ A curated collection of WebGIS applications, spatial analytics dashboards, and g
 <main id="about-view" class="view-section">
 <section class="container">
 
-<h2 class="section-title">
+<h2 class="section-title" data-i18n="about_title">
 The Creator Behind GeoLand
 </h2>
 
-<p class="section-sub">
-Meet the geospatial engineer behind the vision, architecture, and development of the GeoLand platform.
+<p class="section-sub" data-i18n="about_subtitle">
+Meet the person behind the vision, architecture, and development of GeoLand — a Location Intelligence platform built to transform geographic data into actionable insights.
 </p>
 
 <div class="about-grid">
@@ -607,20 +851,23 @@ alt="Bayu Ariyadi - Creator of GeoLand">
 
 <h3>Bayu Ariyadi</h3>
 
-<div class="geo-badge" style="margin-bottom:24px;">
+<div 
+class="geo-badge" 
+style="margin-bottom:24px;"
+data-i18n="about_role">
 Platform Architect
 </div>
 
-<p>
-GeoLand was created by Bayu Ariyadi as an independent Location Intelligence platform that combines modern geospatial technologies, AI-assisted spatial analytics, and interactive web mapping to transform nationwide geographic data into actionable spatial intelligence.
+<p data-i18n="about_p1">
+GeoLand was created by Bayu Ariyadi as an independent Location Intelligence platform designed to transform complex geographic data into meaningful insights for better decision-making. The platform combines artificial intelligence, spatial analytics, interactive mapping, and advanced visualization to help organizations understand locations, identify opportunities, and make smarter decisions based on geography.
 </p>
 
-<p>
-The platform integrates PostgreSQL/PostGIS, vector tiles, large-scale spatial databases, 3D visualization, and AI-powered analytical workflows into a scalable architecture capable of processing and visualizing millions of spatial features efficiently through a modern web environment.
+<p data-i18n="about_p2">
+GeoLand integrates multiple geospatial data sources including buildings, transportation networks, points of interest, administrative information, environmental indicators, and regional characteristics into a unified intelligence ecosystem. Through AI-assisted analysis and interactive visualization, users can evaluate locations, discover potential areas, analyze accessibility, understand surrounding activities, and generate data-driven recommendations.
 </p>
 
-<p>
-Driven by a passion for geospatial engineering and innovation, GeoLand continues to evolve as a long-term project focused on making advanced spatial analysis more accessible for businesses, governments, researchers, planners, and decision-makers across multiple industries.
+<p data-i18n="about_p3">
+Built as a scalable geospatial intelligence platform, GeoLand is designed to support business expansion, investment analysis, urban planning, asset monitoring, and regional development. The platform continues to evolve as a long-term initiative to make advanced location intelligence more accessible for businesses, governments, researchers, planners, and decision-makers across different industries.
 </p>
 
 </div>
@@ -628,26 +875,42 @@ Driven by a passion for geospatial engineering and innovation, GeoLand continues
 </div>
 
     <div class="back-home-container">
-      <a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
+      <a 
+onclick="switchView('home-view')" 
+class="btn btn-secondary"
+data-i18n="back_home">
+← Back to Home
+</a>
     </div>
   </section>
 </main>
 
 <main id="contact-view" class="view-section">
   <section class="container">
-    <h2 class="section-title">Contact</h2>
-    <p class="section-sub">Let's discuss geospatial data integration, imagery processing, and custom web mapping systems for your company.</p>
+<h2 class="section-title" data-i18n="contact_title">
+Contact
+</h2>
+
+<p class="section-sub" data-i18n="contact_subtitle">
+Let's discuss geospatial data integration, imagery processing, and custom web mapping systems for your company.
+</p>
     
     <div class="contact-corporate-card glass">
-      <p class="contact-desc">Quick response channels for spatial infrastructure project inquiries:</p>
+      <p class="contact-desc" data-i18n="contact_desc">
+Quick response channels for spatial infrastructure project inquiries:
+</p>
       
       <div class="contact-channels">
         <div class="channel-item">
-          <span class="channel-label">Telepon & WhatsApp</span>
+          <span class="channel-label" data-i18n="contact_phone">
+Telepon & WhatsApp
+</span>
           <span class="channel-value">+62 821-1490-8665</span>
         </div>
         <div class="channel-item">
-          <span class="channel-label">E-mail Operasional</span>
+          <span class="channel-label" data-i18n="contact_email">
+E-mail Operasional
+</span>
           <span class="channel-value">bayuariyadi41@gmail.com</span>
         </div>
       </div>
@@ -663,13 +926,21 @@ Driven by a passion for geospatial engineering and innovation, GeoLand continues
     </div>
 
     <div class="back-home-container">
-      <a onclick="switchView('home-view')" class="btn btn-secondary">← Back to Home</a>
+      <a 
+onclick="switchView('home-view')" 
+class="btn btn-secondary"
+data-i18n="back_home">
+← Back to Home
+</a>
     </div>
   </section>
 </main>
 
-<footer>© 2026 GeoLand | Geospatial Intelligence Solutions</footer>
+<footer data-i18n="footer_text">
+© 2026 GeoLand | Geospatial Intelligence Solutions
+</footer>
 
+<script type="module" src="assets/js/translations.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>

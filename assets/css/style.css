@@ -171,6 +171,50 @@ nav a:hover, nav a.active-nav {
   text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
 }
 
+/* ===============================
+   LANGUAGE SWITCHER (UPDATED)
+================================ */
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antar tombol INA dan ENG */
+  margin-left: 30px;
+}
+
+/* Style langsung ditembak ke tag button di dalam language-switch */
+.language-switch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px; /* Proporsi disamakan dengan tombol back to home */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Tiap tombol punya border sendiri */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem; /* Font diperbesar */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.language-switch button:hover {
+  border-color: #00f0ff;
+  background: rgba(0, 240, 255, 0.05);
+  color: #00f0ff;
+  text-shadow: none;
+  transform: translateY(-2px); /* Animasi naik saat di-hover */
+  box-shadow: 0 4px 12px rgba(0, 240, 255, 0.1);
+}
+
+/* Menghilangkan pemisah / simbol | */
+.language-switch span {
+  display: none; 
+}
+
 /* ===== REUSABLE COMPONENT STYLES ===== */
 section { padding: 100px 0; }
 .section-title { 
@@ -381,23 +425,37 @@ section { padding: 100px 0; }
 .feature-card h3 { font-size: 1.25rem; margin-bottom: 16px; color: #f8fafc; }
 .feature-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; font-weight: 300; }
 
-.feature-btn {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 24px;
-  padding: 8px 0;
-  color: #00f0ff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
+.feature-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-top:24px;
+  padding:12px 22px;
+
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;
+
+  background:rgba(255,255,255,.02);
+  color:#ffffff;
+
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+
+  cursor:pointer;
+  transition:.3s;
 }
-.feature-btn:hover { color: #ffffff; text-shadow: 0 0 8px #00f0ff; }
+
+.feature-btn:hover{
+  border-color:#00f0ff;
+  background:rgba(0,240,255,.05);
+  color:#00f0ff;
+  text-shadow:none;
+  transform:translateY(-2px);
+}
 
 /* ===================================
    PRODUCT TOUR
@@ -628,6 +686,20 @@ header{
 .location-text{
     font-size:.6rem;
     margin-top:3px;
+}
+
+.language-switch {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+    gap: 6px; /* Jarak diperkecil sedikit di HP */
+}
+
+.language-switch button {
+    padding: 6px 12px; /* Tombol sedikit disesuaikan ukurannya untuk HP */
+    font-size: 0.75rem;
 }
 
 .menu-toggle{
