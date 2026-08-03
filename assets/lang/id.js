@@ -5,7 +5,7 @@ const id = {
     nav_features: "Fitur",
     nav_tour: "Tur Produk",
     nav_gallery: "Galeri Peta",
-    nav_about: "Tentang",
+    nav_about: "Di Balik GeoLand",
     nav_contact: "Kontak",
 
     // Hero

@@ -5,7 +5,7 @@ const en = {
     nav_features: "Features",
     nav_tour: "Product Tour",
     nav_gallery: "Map Gallery",
-    nav_about: "About",
+    nav_about: "Behind GeoLand",
     nav_contact: "Contact",
 
     // Hero
