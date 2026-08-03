@@ -244,11 +244,13 @@ section { padding: 100px 0; }
   -webkit-backdrop-filter: blur(12px);
 }
 
-.btn {
+/* TIMPA KODE DARI .btn SAMPAI .feature-btn:hover DI REUSABLE COMPONENT STYLES */
+
+.btn, .feature-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  padding: 12px 28px;
   border-radius: 8px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -257,26 +259,39 @@ section { padding: 100px 0; }
   cursor: pointer;
   font-size: 0.85rem;
   font-family: 'Space Grotesk', sans-serif;
+  
+  /* FIX HP: Mencegah tombol melar mengikuti lebar layar */
+  width: fit-content; 
+  white-space: nowrap;
 }
+
+/* Style Tombol Utama (Try Now, dll) */
 .btn-primary { 
   background: #00f0ff; 
   color: #05070f; 
   border: 1px solid #00f0ff; 
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
 }
 .btn-primary:hover { 
   transform: translateY(-2px); 
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); 
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); 
+  background: #33f3ff;
 }
-.btn-secondary { 
-  border: 1px solid rgba(255, 255, 255, 0.15); 
-  color: #ffffff; 
-  background: rgba(255,255,255,0.02); 
-}
-.btn-secondary:hover { 
-  border-color: #00f0ff; 
+
+/* Style Tombol Sekunder & Fitur (Open Dashboard, Product Tour, dll) diseragamkan */
+.btn-secondary, .feature-btn { 
+  border: 1px solid rgba(0, 240, 255, 0.3); 
   color: #00f0ff; 
   background: rgba(0, 240, 255, 0.05); 
+  backdrop-filter: blur(4px);
+  margin-top: 24px; /* Khusus jarak atas untuk tombol fitur */
+}
+.btn-secondary:hover, .feature-btn:hover { 
+  border-color: #00f0ff; 
+  color: #00f0ff; 
+  background: rgba(0, 240, 255, 0.15); 
   transform: translateY(-2px); 
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
 }
 
 .back-home-container { display: flex; justify-content: center; margin-top: 50px; }
@@ -736,36 +751,57 @@ header{
     box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
 }
 
+/* TIMPA KODE DARI #main-menu SAMPAI #main-menu a DI DALAM @media (max-width:768px) */
+
 #main-menu {
     display: none;
     position: absolute;
-    top: 76px; /* Disesuaikan agar pas di bawah header */
+    top: 85px; /* Digeser ke bawah agar pas posisinya di bawah header */
     left: 18px;
     right: 18px;
     flex-direction: column;
-    padding: 12px;
+    padding: 8px;
     
-    /* REDESIGN: Dropdown menu disesuaikan dengan tema Glassmorphism */
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(0, 240, 255, 0.15);
+    /* THEMA CYBER/GLASSMORPHISM */
+    background: rgba(10, 15, 30, 0.95);
+    border: 1px solid rgba(0, 240, 255, 0.2);
     border-radius: 12px;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.1);
     z-index: 1000;
 }
 
 #main-menu.show {
     display: flex;
+    animation: slideDownMenu 0.3s ease forwards;
 }
 
 #main-menu a {
     width: 100%;
     margin: 0;
-    padding: 14px;
-    text-align: center;
-    /* Tambahan garis pembatas tipis antar menu */
+    padding: 14px 20px;
+    text-align: left; /* Rata kiri lebih modern & rapi */
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    border-radius: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+#main-menu a:last-child {
+    border-bottom: none;
+}
+
+#main-menu a:hover, #main-menu a.active-nav {
+    background: rgba(0, 240, 255, 0.1);
+    color: #00f0ff;
+    padding-left: 26px; /* Efek geser kanan dikit saat dipencet/hover */
+}
+
+@keyframes slideDownMenu {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #main-menu a:last-child {
