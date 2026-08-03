@@ -40,39 +40,12 @@ body{
 font-size:15px;
 }
 
-header{
-position:sticky;
-}
-
-.nav-wrap{
-flex-direction:column;
-gap:18px;
-padding:18px 0;
-}
-
-.logo{
-font-size:28px;
-text-align:center;
-}
-
-.location-text{
-justify-content:center;
-}
-
-nav{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-}
-
-nav a{
-margin:0;
-font-size:.9rem;
-}
-
 section{
 padding:60px 0;
+}
+
+.hero-corporate{
+padding-top:30px;
 }
 
 .hero-corporate h1{
@@ -84,11 +57,22 @@ font-size:1rem;
 }
 
 .dashboard-panel{
+aspect-ratio:16/10;
 border-radius:18px;
+}
+
+.dashboard-panel video{
+object-fit:cover;
 }
 
 .geoland-description{
 padding:25px;
+}
+
+.geoland-description p{
+text-align:left;
+font-size:.96rem;
+line-height:1.8;
 }
 
 .section-title{
@@ -110,20 +94,72 @@ grid-template-columns:1fr;
 padding:25px;
 }
 
+.feature-card h3,
+.project-content h3,
+.tour-header h3{
+font-size:1.3rem;
+}
+
+.feature-card p,
+.project-content p,
+.tour-header p{
+font-size:.95rem;
+}
+
 .tour-media{
 width:100%;
+border-radius:14px;
+}
+
+.tour-media video{
+border-radius:14px;
 }
 
 .tour-steps{
 grid-template-columns:1fr;
 }
 
+.tour-step{
+padding:18px;
+}
+
+.tour-step span{
+font-size:.95rem;
+}
+
 .about-image-wrap{
 max-width:180px;
 }
 
+.edu-corporate-box{
+flex-direction:column;
+text-align:center;
+gap:15px;
+}
+
+.skills{
+justify-content:center;
+}
+
+.skill{
+font-size:.8rem;
+padding:8px 14px;
+}
+
 .contact-corporate-card{
 padding:25px;
+}
+
+.contact-desc{
+font-size:.95rem;
+}
+
+.contact-channels{
+grid-template-columns:1fr;
+}
+
+.channel-item{
+padding:18px;
 }
 
 .social-medias{
@@ -131,8 +167,27 @@ gap:18px;
 flex-wrap:wrap;
 }
 
+.social-icon-btn{
+width:38px;
+height:38px;
+}
+
+.back-home-container{
+margin-top:30px;
+}
+
 .btn{
 width:100%;
+padding:14px 18px;
+font-size:.95rem;
+}
+
+body .radar{
+width:500px;
+height:500px;
+top:-120px;
+right:-180px;
+opacity:.45;
 }
 
 }
@@ -152,18 +207,14 @@ font-size:1.7rem;
 font-size:1.6rem;
 }
 
-.logo{
-font-size:24px;
+.geoland-description{
+padding:20px;
 }
 
 .feature-icon{
 width:55px;
 height:55px;
 font-size:24px;
-}
-
-.geoland-description{
-padding:20px;
 }
 
 .channel-value{
@@ -176,117 +227,3 @@ padding:30px 15px;
 }
 
 }
-
-/* ==========================================
-   EXTRA MOBILE OPTIMIZATION
-========================================== */
-
-@media (max-width:768px){
-
-body .radar{
-width:500px;
-height:500px;
-top:-120px;
-right:-180px;
-opacity:.45;
-}
-
-.container{
-padding-left:15px;
-padding-right:15px;
-}
-
-.hero-corporate{
-padding-top:30px;
-}
-
-.dashboard-panel{
-aspect-ratio:16/10;
-}
-
-.dashboard-panel video{
-object-fit:cover;
-}
-
-.geoland-description p{
-text-align:left;
-font-size:.96rem;
-line-height:1.8;
-}
-
-.feature-card h3,
-.project-content h3,
-.tour-header h3{
-font-size:1.3rem;
-}
-
-.feature-card p,
-.project-content p,
-.tour-header p{
-font-size:.95rem;
-}
-
-.feature-btn{
-width:100%;
-margin-top:20px;
-}
-
-.project-card img{
-height:200px;
-}
-
-.tour-media{
-border-radius:14px;
-}
-
-.tour-media video{
-border-radius:14px;
-}
-
-.tour-step{
-padding:18px;
-}
-
-.tour-step span{
-font-size:.95rem;
-}
-
-.back-home-container{
-margin-top:30px;
-}
-
-.btn{
-padding:14px 18px;
-font-size:.95rem;
-}
-
-.edu-corporate-box{
-flex-direction:column;
-text-align:center;
-gap:15px;
-}
-
-.skills{
-justify-content:center;
-}
-
-.skill{
-font-size:.8rem;
-padding:8px 14px;
-}
-
-.contact-desc{
-font-size:.95rem;
-}
-
-.channel-item{
-padding:18px;
-}
-
-.social-icon-btn{
-width:38px;
-height:38px;
-}
-
-}
-
