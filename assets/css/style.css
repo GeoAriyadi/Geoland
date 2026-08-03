@@ -583,6 +583,7 @@ footer { text-align: center; padding: 40px 0; color: #64748b; font-size: 0.85rem
   .contact-channels{grid-template-columns:1fr;gap:16px;}
 }
 
+
 /* ===============================
    MOBILE HEADER FIX
 ================================= */
@@ -595,46 +596,49 @@ header{
 
 .nav-wrap{
   flex-direction:row;
-  justify-content:space-between;
+  justify-content:flex-start;
   align-items:center;
-  padding:12px 0;
-}
-
-.logo{
-  font-size:24px;
-}
-
-.location-text{
-  font-size:.65rem;
-  margin-top:3px;
+  gap:14px;
+  padding:10px 0;
 }
 
 .menu-toggle{
   display:flex;
-  order:-1;
-  width:42px;
-  height:42px;
+  order:0;
+  flex-shrink:0;
+  width:36px;
+  height:36px;
   align-items:center;
   justify-content:center;
-  font-size:24px;
-  border-radius:10px;
+  font-size:20px;
+  border-radius:8px;
   margin:0;
   background:#FFC107;
   color:#002266;
 }
 
+.logo{
+  font-size:22px;
+  line-height:1;
+}
+
+.location-text{
+  font-size:.6rem;
+  margin-top:3px;
+}
+
 #main-nav{
   display:none;
   position:absolute;
-  top:70px;
+  top:60px;
   left:15px;
   right:15px;
   flex-direction:column;
-  align-items:center;
-  gap:12px;
-  padding:15px;
-  background:rgba(5,7,15,.95);
-  border-radius:16px;
+  gap:8px;
+  padding:12px;
+  background:rgba(5,7,15,.96);
+  border:1px solid rgba(0,240,255,.15);
+  border-radius:12px;
 }
 
 #main-nav.show{
@@ -645,7 +649,8 @@ header{
   width:100%;
   text-align:center;
   margin:0;
-  padding:12px;
+  padding:10px;
+  font-size:.85rem;
 }
 
 }
@@ -653,11 +658,11 @@ header{
 @media(max-width:768px){
 
 body .radar{
-  width:600px;
-  height:600px;
-  top:-100px;
-  right:-280px;
-  opacity:.4;
+  width:520px;
+  height:520px;
+  top:-80px;
+  right:-360px;
+  opacity:.35;
 }
 
 }
