@@ -688,72 +688,88 @@ header{
     margin-top:3px;
 }
 
+/* TIMPA KODE INI DI DALAM @media (max-width:768px) */
+
 .language-switch {
     position: absolute;
-    right: 18px;
+    right: 8px; /* Geser lebih mentok ke ujung kanan layar (sebelumnya 18px) */
     top: 50%;
     transform: translateY(-50%);
     margin-left: 0;
-    gap: 6px; /* Jarak diperkecil sedikit di HP */
+    gap: 4px; /* Jarak antar tombol INA/ENG dirapatkan sedikit */
 }
 
 .language-switch button {
-    padding: 6px 12px; /* Tombol sedikit disesuaikan ukurannya untuk HP */
-    font-size: 0.75rem;
+    padding: 6px 10px; /* Padding kiri-kanan dikurangi agar tombol lebih ramping */
+    font-size: 0.7rem; /* Font diperkecil sedikit agar tidak makan tempat */
+    letter-spacing: 0; /* Menghilangkan spasi ekstra antar huruf di HP */
 }
 
-.menu-toggle{
-    position:absolute;
+/* TIMPA KODE INI DI DALAM @media (max-width:768px) */
 
-    left:18px;
-    top:50%;
-    transform:translateY(-50%);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    width:42px;
-    height:42px;
-
-    font-size:22px;
-
-    border:none;
-    border-radius:8px;
-
-    background:#FFC107;
-    color:#002266;
-
-    z-index:1001;
+.menu-toggle {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    
+    /* REDESIGN: Tema Cyber & Glassmorphism */
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
 }
 
-#main-menu{
-    display:none;
-
-    position:absolute;
-
-    top:64px;
-    left:18px;
-    right:18px;
-
-    flex-direction:column;
-
-    padding:12px;
-
-    background:rgba(5,7,15,.97);
-
-    border-radius:12px;
+.menu-toggle:active {
+    background: rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
 }
 
-#main-menu.show{
-    display:flex;
+#main-menu {
+    display: none;
+    position: absolute;
+    top: 76px; /* Disesuaikan agar pas di bawah header */
+    left: 18px;
+    right: 18px;
+    flex-direction: column;
+    padding: 12px;
+    
+    /* REDESIGN: Dropdown menu disesuaikan dengan tema Glassmorphism */
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
 }
 
-#main-menu a{
-    width:100%;
-    margin:0;
-    padding:12px;
-    text-align:center;
+#main-menu.show {
+    display: flex;
+}
+
+#main-menu a {
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    text-align: center;
+    /* Tambahan garis pembatas tipis antar menu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#main-menu a:last-child {
+    border-bottom: none;
 }
 }
 
