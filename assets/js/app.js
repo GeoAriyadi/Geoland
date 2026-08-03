@@ -14,7 +14,7 @@ behavior:"smooth"
 });
 }
 
-document.querySelectorAll("#main-nav a").forEach(nav=>{
+document.querySelectorAll("#main-menu a").forEach(nav=>{
 nav.classList.remove("active-nav");
 });
 
@@ -26,17 +26,16 @@ viewId==="tour-batch"||
 viewId==="tour-building"||
 viewId==="tour-report"
 ){
-
 document.getElementById("nav-tour-view").classList.add("active-nav");
-
 }else{
-
 const nav=document.getElementById("nav-"+viewId);
-
-if(nav){
-nav.classList.add("active-nav");
+if(nav) nav.classList.add("active-nav");
 }
 
+const menu=document.getElementById("main-menu");
+if(menu) menu.classList.remove("show");
 }
 
+function toggleMenu(){
+document.getElementById("main-menu").classList.toggle("show");
 }

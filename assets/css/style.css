@@ -627,7 +627,7 @@ header{
   margin-top:3px;
 }
 
-#main-nav{
+#main-menu{
   display:none;
   position:absolute;
   top:60px;
@@ -641,11 +641,11 @@ header{
   border-radius:12px;
 }
 
-#main-nav.show{
+#main-menu.show{
   display:flex;
 }
 
-#main-nav a{
+#main-menu a{
   width:100%;
   text-align:center;
   margin:0;
