@@ -17,9 +17,10 @@ body {
   isolation: isolate;
 }
 
-p, .section-sub, .contact-desc, .tour-step p, .feature-card p, .project-content p, .about-details p {
-    text-align: justify !important;
-    text-justify: inter-word;
+
+p, .contact-desc, .tour-step p, .feature-card p, .project-content p, .about-details p {
+  text-align: justify !important;
+  text-justify: inter-word;
 }
 
 /* Terapkan font techy untuk heading */
@@ -233,7 +234,7 @@ section { padding: 100px 0; }
 .section-sub { 
   color: #94a3b8; 
   margin-bottom: 50px; 
-  text-align: center; 
+  text-align: center !important; /* DITAMBAHKAN !important agar tidak kalah oleh tag <p> global */
   max-width: 620px; 
   margin-left: auto; 
   margin-right: auto;
@@ -394,7 +395,9 @@ section { padding: 100px 0; }
   backdrop-filter: blur(12px);
   transition: all 0.4s ease;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .feature-card::before {
   content: "";
@@ -425,7 +428,15 @@ section { padding: 100px 0; }
   margin-bottom: 24px;
 }
 .feature-card h3 { font-size: 1.25rem; margin-bottom: 16px; color: #f8fafc; }
-.feature-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; font-weight: 300; }
+.feature-card p { 
+  color: #94a3b8; 
+  line-height: 1.7; 
+  font-size: 0.95rem; 
+  font-weight: 300; 
+  /* Mendorong tombol ke bawah dan memberi jarak */
+  flex-grow: 1; 
+  margin-bottom: 24px; 
+}
 
 
 /* ===================================
@@ -462,6 +473,10 @@ section { padding: 100px 0; }
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Tambahan Flexbox agar proporsional */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .tour-step span {
   display: block;
@@ -473,7 +488,23 @@ section { padding: 100px 0; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-.tour-step p { margin: 0; color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; font-weight: 300; }
+.tour-step p { 
+  margin: 0; 
+  color: #cbd5e1; 
+  line-height: 1.6; 
+  font-size: 0.95rem; 
+  font-weight: 300; 
+  /* Mendorong tombol ke bawah dan memberi jarak */
+  flex-grow: 1; 
+  margin-bottom: 24px; 
+}
+
+/* KODE BARU: Memastikan semua tombol/link di dalam card selalu di tengah bawah */
+.feature-card a, .feature-card button, .feature-card .btn,
+.tour-step a, .tour-step button, .tour-step .btn {
+  margin-top: auto;
+  align-self: center;
+}
 
 /* ===== VIEW 2: MAP GALLERY ===== */
 .project-grid {
